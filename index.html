@@ -1,130 +1,297 @@
 <!doctype html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Kanban Task</title>
-  </head>
-  <body
-    class="min-h-screen bg-white text-[#2b2c37] dark:bg-[#20212c] dark:text-white">
-    <div class="grid min-h-screen grid-cols-[260px_1fr]">
-      <aside class="border-r border-[#e4ebfa] bg-white dark:border-[#3e3f4e] dark:bg-[#2b2c37]">
-        <div class="px-6 py-6">
-          <img src="img/logo-light-4fb0dd87.svg" alt="Kanban Logo"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanban Task</title>
+</head>
+<body class="min-h-screen bg-[#f4f7fd] text-[#2b2c37] dark:bg-[#20212c] dark:text-white">
+  <!--MAIN CONTAINER-->
+  <div class="grid min-h-screen grid-cols-[260px_1fr]">
+    <!-- SIDEBAR-->
+    <aside class="relative border-r border-[#e4ebfa] bg-white dark:border-[#3e3f4e] dark:bg-[#2b2c37]">
+      <!-- LOGO -->
+      <div class="px-6 py-6">
+        <img src="img/logo-light-4fb0dd87.svg" alt="Kanban Logo" />
+      </div>
+      <!-- BOARDS -->
+      <nav class="mt-4">
+        <p class="mb-4 px-6 text-xs font-bold uppercase tracking-widest text-[#828fa3]">
+          All Boards (4)
+        </p>
+        <!-- BOARD 1 -->
+        <button id="board-1" class="board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl bg-[#635fc7] px-6 text-left text-white">
+          <span>▰</span>
+          <span>
+            Platform Launch
+          </span>
+        </button>
+        <!-- BOARD 2 -->
+        <button id="board-2" class="board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
+          <span>▰</span>
+          <span>
+            Marketing Plan
+          </span>
+        </button>
+        <!-- BOARD 3 -->
+        <button id="board-3" class="board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
+          <span>▰</span>
+          <span>
+            Roadmap
+          </span>
+        </button>
+        <!-- BOARD 4 -->
+        <button id="board-4" class="board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
+          <span>▰</span>
+          <span>
+            Website Design
+          </span>
+        </button>
+        <!-- CREATE BOARD -->
+        <button id="create-board" class="mt-2 flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#635fc7] hover:bg-[#f0effa] dark:hover:bg-[#3e3f4e]">
+          <span class="text-xl">
+            +
+          </span>
+          <span>
+            Create New Board
+          </span>
+        </button>
+      </nav>
+      <!--THEME SWITCH-->
+      <div class="absolute bottom-6 left-4 w-[228px]">
+        <div class="flex items-center justify-center gap-4 rounded-lg bg-[#f4f7fd] p-3 dark:bg-[#20212c]">
+          <span>
+            ☀️
+          </span>
+          <button id="theme-toggle" class="relative h-6 w-12 rounded-full bg-[#635fc7]">
+            <span class="absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition-all"></span>
+          </button>
+          <span>
+            🌙
+          </span>
         </div>
-        <nav class="mt-4">
-          <p class="mb-4 px-6 text-xs font-bold uppercase tracking-widest text-[#828fa3]">
-            All Boards (3)
-          </p>
-          <button class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl bg-[#635fc7] px-6 text-left text-white">
-            <span>▰</span>
-            <span>
-              Platform Launch
-            </span>
-          </button>
-          <button
-            class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
-            <span>▰</span>
-            <span>
-              Marketing Plan
-            </span>
-          </button>
-          <button class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
-            <span>▰</span>
-            <span>
-              Roadmap
-            </span>
-          </button>
-          <button class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#635fc7] hover:bg-[#f0effa] dark:hover:bg-[#3e3f4e]">
-            <span class="text-xl">
+      </div>
+    </aside>
+    <!--MAIN-->
+    <main class="grid min-w-0 grid-rows-[80px_1fr]">
+      <!-- HEADER-->
+      <header class="flex items-center justify-between border-b border-[#e4ebfa] bg-white px-6 dark:border-[#3e3f4e] dark:bg-[#2b2c37]">
+        <!-- BOARD TITLE -->
+        <h1 id="board-title" class="text-2xl font-bold text-[#2b2c37] dark:text-white">
+          Platform Launch
+        </h1>
+        <!-- HEADER BUTTONS -->
+        <div class="flex items-center gap-4">
+          <button id="add-task" class="flex h-12 items-center justify-center rounded-3xl bg-[#635fc7] px-6 font-bold text-white hover:bg-[#7a77d8]">
+            <span class="mr-2 text-xl">
               +
             </span>
             <span>
-              Create New Board
+              Add New Task
             </span>
           </button>
-        </nav>
-        <div class="absolute bottom-6 left-4 w-[228px]">
-          <div class="flex items-center justify-center gap-4 rounded-lg bg-[#f4f7fd] p-3 dark:bg-[#20212c]">
-            <span>
-              ☀️
-            </span>
-            <button id="theme-toggle" class="relative h-6 w-12 rounded-full bg-[#635fc7]">
-              <span class="absolute left-1 top-1h-4 w-4  rounded-full bg-white  transition-all"
-              ></span>
-            </button>
-            <span>
-              🌙
+          <button id="more-button" class="flex h-10 w-10 items-center justify-center text-2xl font-bold text-[#828fa3] hover:text-[#635fc7]">
+            ⋮
+          </button>
+        </div>
+      </header>
+      <!--BOARD-->
+      <section id="board-container" class="grid min-w-0 grid-cols-3 gap-6 overflow-auto bg-[#f4f7fd] p-6 dark:bg-[#20212c]">
+        <!--TODO-->
+        <div class="min-w-0">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="block h-4 w-4 rounded-full bg-[#49c4e5]"></span>
+            <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
+              TODO
+            </h2>
+            <span id="todo-count" class="text-xs font-bold text-[#828fa3]">
+              (0)
             </span>
           </div>
+          <!-- TODO TASKS -->
+          <div id="todo-list" class="space-y-4">
+          </div>
         </div>
-      </aside>
-      <main>
-<main class="grid min-w-0 grid-rows-[80px_1fr]">
-  <header class="flex items-center justify-between border-b border-[#e4ebfa] bg-white px-6 dark:border-[#3e3f4e] dark:bg-[#2b2c37]">
-    <h1 class="text-2xl font-bold text-[#2b2c37] dark:text-white">
-      Platform Launch
-    </h1>
-    <div class="flex items-center gap-4">
-      <button id="add-task" class="flex h-12 items-center justify-center rounded-3xl bg-[#635fc7] px-6
- font-bold text-white hover:bg-[#7a77d8]">
-        <span class="mr-2 text-xl">+</span>
-        <span>
+        <!--DOING-->
+        <div class="min-w-0">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="block h-4 w-4 rounded-full bg-[#8471f2]"></span>
+            <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
+              DOING
+            </h2>
+            <span id="doing-count" class="text-xs font-bold text-[#828fa3]">
+              (0)
+            </span>
+          </div>
+          <!-- DOING TASKS -->
+          <div id="doing-list" class="space-y-4">
+          </div>
+        </div>
+        <!--DONE-->
+        <div class="min-w-0">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="block h-4 w-4 rounded-full bg-[#67e2ae]"></span>
+            <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
+              DONE
+            </h2>
+            <span id="done-count" class="text-xs font-bold text-[#828fa3]">
+              (0)
+            </span>
+          </div>
+          <!-- DONE TASKS -->
+          <div id="done-list" class="space-y-4">
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!--TASK DETAILS -->
+  <div id="task-details" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/50 px-4">
+    <div class="w-full max-w-[500px] rounded-lg bg-white p-8 dark:bg-[#2b2c37]">
+      <!-- DETAILS HEADER -->
+      <div class="mb-6 flex items-center justify-between">
+        <h2 id="details-title" class="text-xl font-bold text-[#2b2c37] dark:text-white">
+          Task Details
+        </h2>
+        <button id="close-details" class="text-2xl font-bold text-[#828fa3] hover:text-[#635fc7]">
+          ×
+        </button>
+      </div>
+      <!-- DETAILS DESCRIPTION -->
+      <p id="details-description" class="mb-6 text-sm leading-6 text-[#828fa3]">
+      </p>
+      <!-- DETAILS STATUS -->
+      <div class="mb-6">
+        <label class="mb-2 block text-xs font-bold text-[#828fa3]">
+          Current Status
+        </label>
+        <select id="details-status" class="w-full rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white">
+          <option value="todo">
+            Todo
+          </option>
+          <option value="doing">
+            Doing
+          </option>
+          <option value="done">
+            Done
+          </option>
+        </select>
+      </div>
+      <!-- SUBTASKS -->
+      <div>
+        <p class="mb-3 text-xs font-bold text-[#828fa3]">
+          Subtasks
+        </p>
+        <div id="details-subtasks" class="space-y-2">
+        </div>
+      </div>
+      <!-- DETAILS ACTIONS -->
+      <div class="mt-6 flex gap-3">
+        <button id="edit-task" class="flex-1 rounded-2xl bg-[#635fc7] py-3 font-bold text-white hover:bg-[#7a77d8]">
+          Edit Task
+        </button>
+        <button id="delete-task" class="flex-1 rounded-2xl bg-[#ea5555] py-3 font-bold text-white hover:bg-[#ff6b6b]">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--ADD TASK MODAL-->
+  <div id="task-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4">
+    <div class="w-full max-w-[480px] rounded-lg bg-white p-8 dark:bg-[#2b2c37]">
+      <!-- MODAL HEADER -->
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-bold text-[#2b2c37] dark:text-white">
           Add New Task
-        </span>
-      </button>
-      <button id="more-button" class="flex h-10 w-10 items-center justify-center text-2xl font-bold text-[#828fa3]  hover:text-[#635fc7]">
-      </button>
-    </div>
-  </header>
-  <section class="grid grid-cols-3 gap-6 overflow-auto bg-[#f4f7fd] p-6 dark:bg-[#20212c]">
-<section class="grid min-w-0 grid-cols-3 gap-6 overflow-auto bg-[#f4f7fd] p-6 dark:bg-[#20212c]">
-  <div class="min-w-0">
-    <div class="mb-6 flex items-center gap-3">
-      <span
-        class="block h-4 w-4 rounded-full bg-[#49c4e5]"></span>
-      <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
-        TODO
-      </h2>
-      <span class="text-xs font-bold text-[#828fa3]">
-        (4)
-      </span>
-    </div>
-    <div class="space-y-4">
+        </h2>
+        <button id="close-modal" type="button" class="text-2xl font-bold text-[#828fa3] hover:text-[#635fc7]">
+          ×
+        </button>
+      </div>
+      <!-- FORM -->
+      <form id="task-form" class="space-y-5">
+        <!-- TITLE -->
+        <div>
+          <label for="task-title" class="mb-2 block text-xs font-bold text-[#828fa3]">
+            Title
+          </label>
+          <input id="task-title" type="text" required placeholder="e.g. Take coffee break" class="w-full rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white" />
+        </div>
+        <!-- DESCRIPTION -->
+        <div>
+          <label for="task-description" class="mb-2 block text-xs font-bold text-[#828fa3]">
+            Description
+          </label>
+          <textarea id="task-description" rows="4" placeholder="e.g. It’s always good to take a break..." class="w-full resize-none rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white"></textarea>
+        </div>
+        <!-- STATUS -->
+        <div>
+          <label for="task-status" class="mb-2 block text-xs font-bold text-[#828fa3]">
+            Status
+          </label>
+          <select id="task-status" class="w-full rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white">
+            <option value="todo">
+              Todo
+            </option>
+            <option value="doing">
+              Doing
+            </option>
+            <option value="done">
+              Done
+            </option>
+          </select>
+        </div>
+        <!-- SUBTASKS -->
+        <div>
+          <label class="mb-2 block text-xs font-bold text-[#828fa3]">
+            Subtasks
+          </label>
+          <div id="subtask-container" class="space-y-3">
+            <!-- SUBTASK -->
+            <div class="flex gap-3">
+              <input type="text" placeholder="e.g. Make coffee" class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white" />
+              <button type="button" class="remove-subtask px-2 text-xl font-bold text-[#828fa3] hover:text-[#ea5555]">
+                ×
+              </button>
+            </div>
+          </div>
+          <!-- ADD SUBTASK -->
+          <button id="add-subtask" type="button" class="mt-3 w-full rounded-2xl bg-[#f0effa] py-3 font-bold text-[#635fc7] hover:bg-[#deddf5] dark:bg-white dark:hover:bg-[#eeeeee]">
+            + Add New Subtask
+          </button>
+        </div>
+        <!-- CREATE TASK -->
+        <button type="submit" class="w-full rounded-2xl bg-[#635fc7] py-3 font-bold text-white hover:bg-[#7a77d8]">
+          Create Task
+        </button>
+      </form>
     </div>
   </div>
-  <div class="min-w-0">
-    <div class="mb-6 flex items-center gap-3">
-      <span class="block h-4 w-4 rounded-full bg-[#8471f2]"></span>
-      <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
-        DOING
-      </h2>
-      <span class="text-xs font-bold text-[#828fa3]" >
-        (2)
-      </span>
-    </div>
-    <div class="space-y-4">
-    </div>
-  </div>
-  <div class="min-w-0">
-    <div class="mb-6 flex items-center gap-3">
-      <span class="block h-4 w-4 rounded-full bg-[#67e2ae]"></span>
-      <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
-        DONE
-      </h2>
-      <span class="text-xs font-bold text-[#828fa3]"
-      >
-        (3)
-      </span>
-    </div>
-    <div class="space-y-4">
+  <!--CREATE BOARD MODAL-->
+  <div id="board-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4">
+    <div class="w-full max-w-[450px] rounded-lg bg-white p-8 dark:bg-[#2b2c37]">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-bold text-[#2b2c37] dark:text-white">
+          Create New Board
+        </h2>
+        <button id="close-board-modal" class="text-2xl font-bold text-[#828fa3] hover:text-[#635fc7]">
+          ×
+        </button>
+      </div>
+      <form id="board-form" class="space-y-5">
+        <div>
+          <label for="board-name" class="mb-2 block text-xs font-bold text-[#828fa3]">
+            Board Name
+          </label>
+          <input id="board-name" type="text" required placeholder="e.g. Website Design" class="w-full rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white" />
+        </div>
+        <button type="submit" class="w-full rounded-2xl bg-[#635fc7] py-3 font-bold text-white hover:bg-[#7a77d8]">
+          Create Board
+        </button>
+      </form>
     </div>
   </div>
-</section>
-  </section>
-</main>
-      </main>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <!--SCRIPT-->
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>
