@@ -1,33 +1,130 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kanbantask</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Kanban Task</title>
   </head>
-  <body>
-  <div class="grid grid-cols-[260px_1fr] min-h-screen ">
-  <aside class="bg-[#2b2c37] border border-amber-50">
-    <nav class="p-0.5">
-  <img src="img/logo-light-4fb0dd87.svg" alt="logo-light" class="p-4">
-<p class="text-[#828fa3] p-4">all boards (3)</p>
-  <button class="w-[231px] h-[35px] bg-[#635fc7] text-[#2b2c37] rounded-r-2xl hover:text-[#635fc7] hover:text-white "> Platform Launch</button>
-   <button class="w-[231px] h-[35px] bg-[#635fc7] text-[#2b2c37] rounded-r-2xl hover:text-[#635fc7] hover:text-white ">  Marketing Plan</button>
-    <button class="w-[231px] h-[35px] bg-[#635fc7] text-[#2b2c37] rounded-r-2xl hover:text-[#635fc7] hover:text-white ">   Roadmap Plan</button>
-    <button class="w-[231px] h-[35px] bg-[#635fc7] text-[#2b2c37] rounded-r-2xl hover:text-[#635fc7] hover:text-white ">  + Create New Board </button>
-  </nav>
-  </aside>
-  <main class="grid grid-rows-[80px_1fr] border border-amber-50">
-    <header class="bg-[#2b2c37]">
-      <h2 class="text-2xl ml-4 ">Platform Launch </h2>
-      <button class="w-[164px] h-[50px] bg-[#635fc7] rounded-2xl relative left-260">+Add New Task</button>
-    </header>
-    <section class="grid grid-cols-3 gap-6 p-6 bg-[#000012] border border-amber-50">
-
-    </section>
-  </main>
-</div>
+  <body
+    class="min-h-screen bg-white text-[#2b2c37] dark:bg-[#20212c] dark:text-white">
+    <div class="grid min-h-screen grid-cols-[260px_1fr]">
+      <aside class="border-r border-[#e4ebfa] bg-white dark:border-[#3e3f4e] dark:bg-[#2b2c37]">
+        <div class="px-6 py-6">
+          <img src="img/logo-light-4fb0dd87.svg" alt="Kanban Logo"/>
+        </div>
+        <nav class="mt-4">
+          <p class="mb-4 px-6 text-xs font-bold uppercase tracking-widest text-[#828fa3]">
+            All Boards (3)
+          </p>
+          <button class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl bg-[#635fc7] px-6 text-left text-white">
+            <span>▰</span>
+            <span>
+              Platform Launch
+            </span>
+          </button>
+          <button
+            class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
+            <span>▰</span>
+            <span>
+              Marketing Plan
+            </span>
+          </button>
+          <button class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]">
+            <span>▰</span>
+            <span>
+              Roadmap
+            </span>
+          </button>
+          <button class="flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#635fc7] hover:bg-[#f0effa] dark:hover:bg-[#3e3f4e]">
+            <span class="text-xl">
+              +
+            </span>
+            <span>
+              Create New Board
+            </span>
+          </button>
+        </nav>
+        <div class="absolute bottom-6 left-4 w-[228px]">
+          <div class="flex items-center justify-center gap-4 rounded-lg bg-[#f4f7fd] p-3 dark:bg-[#20212c]">
+            <span>
+              ☀️
+            </span>
+            <button id="theme-toggle" class="relative h-6 w-12 rounded-full bg-[#635fc7]">
+              <span class="absolute left-1 top-1h-4 w-4  rounded-full bg-white  transition-all"
+              ></span>
+            </button>
+            <span>
+              🌙
+            </span>
+          </div>
+        </div>
+      </aside>
+      <main>
+<main class="grid min-w-0 grid-rows-[80px_1fr]">
+  <header class="flex items-center justify-between border-b border-[#e4ebfa] bg-white px-6 dark:border-[#3e3f4e] dark:bg-[#2b2c37]">
+    <h1 class="text-2xl font-bold text-[#2b2c37] dark:text-white">
+      Platform Launch
+    </h1>
+    <div class="flex items-center gap-4">
+      <button id="add-task" class="flex h-12 items-center justify-center rounded-3xl bg-[#635fc7] px-6
+ font-bold text-white hover:bg-[#7a77d8]">
+        <span class="mr-2 text-xl">+</span>
+        <span>
+          Add New Task
+        </span>
+      </button>
+      <button id="more-button" class="flex h-10 w-10 items-center justify-center text-2xl font-bold text-[#828fa3]  hover:text-[#635fc7]">
+      </button>
+    </div>
+  </header>
+  <section class="grid grid-cols-3 gap-6 overflow-auto bg-[#f4f7fd] p-6 dark:bg-[#20212c]">
+<section class="grid min-w-0 grid-cols-3 gap-6 overflow-auto bg-[#f4f7fd] p-6 dark:bg-[#20212c]">
+  <div class="min-w-0">
+    <div class="mb-6 flex items-center gap-3">
+      <span
+        class="block h-4 w-4 rounded-full bg-[#49c4e5]"></span>
+      <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
+        TODO
+      </h2>
+      <span class="text-xs font-bold text-[#828fa3]">
+        (4)
+      </span>
+    </div>
+    <div class="space-y-4">
+    </div>
+  </div>
+  <div class="min-w-0">
+    <div class="mb-6 flex items-center gap-3">
+      <span class="block h-4 w-4 rounded-full bg-[#8471f2]"></span>
+      <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
+        DOING
+      </h2>
+      <span class="text-xs font-bold text-[#828fa3]" >
+        (2)
+      </span>
+    </div>
+    <div class="space-y-4">
+    </div>
+  </div>
+  <div class="min-w-0">
+    <div class="mb-6 flex items-center gap-3">
+      <span class="block h-4 w-4 rounded-full bg-[#67e2ae]"></span>
+      <h2 class="text-xs font-bold tracking-[2px] text-[#828fa3]">
+        DONE
+      </h2>
+      <span class="text-xs font-bold text-[#828fa3]"
+      >
+        (3)
+      </span>
+    </div>
+    <div class="space-y-4">
+    </div>
+  </div>
+</section>
+  </section>
+</main>
+      </main>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
