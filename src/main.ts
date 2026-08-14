@@ -810,3 +810,226 @@ boardButtons.forEach((button) => {
     button.classList.remove("text-[#828fa3]");
   });
 });
+const createBoardButton = document.getElementById("create-board")!;
+const boardModal = document.getElementById("board-modal")!;
+const closeBoardModal = document.getElementById("close-board-modal")!;
+const boardForm = document.getElementById("board-form") as HTMLFormElement;
+const boardNameInput = document.getElementById(
+  "board-name",
+) as HTMLInputElement;
+createBoardButton.addEventListener("click", () => {
+  boardModal.classList.remove("hidden");
+  boardModal.classList.add("flex");
+  boardNameInput.focus();
+});
+closeBoardModal.addEventListener("click", () => {
+  boardModal.classList.add("hidden");
+  boardModal.classList.remove("flex");
+  boardForm.reset();
+});
+boardForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = boardNameInput.value.trim();
+  if (!name) return;
+  const newBoard: Board = {
+    id: Date.now(),
+    name,
+    tasks: [],
+  };
+  boards.push(newBoard);
+  boardForm.reset();
+  boardModal.classList.add("hidden");
+  boardModal.classList.remove("flex");
+});
+const boardsNav = document.querySelector("nav")!;
+function renderSidebar(): void {
+  const createButton = document.getElementById("create-board")!;
+  boardsNav.querySelectorAll(".board-button").forEach((button) => {
+    button.remove();
+  });
+  boards.forEach((board) => {
+    const button = document.createElement("button");
+    button.className =
+      "board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]";
+    if (board.id === currentBoardId) {
+      button.classList.add("bg-[#635fc7]", "text-white");
+      button.classList.remove("text-[#828fa3]");
+    }
+    button.innerHTML = `
+      <span>▰</span>
+      <span>${board.name}</span>
+    `;
+    button.addEventListener("click", () => {
+      currentBoardId = board.id;
+      renderSidebar();
+      renderTasks();
+    });
+    boardsNav.insertBefore(button, createButton);
+  });
+}
+const boardsCount = document.getElementById("boards-count")!;
+function updateBoardsCount(): void {
+  boardsCount.textContent = `All Boards (${boards.length})`;
+}
+loadData();
+renderSidebar();
+updateBoardsCount();
+renderTasks();
+function editBoard(): void {
+  const board = getCurrentBoard();
+  const newName = prompt("Enter new board name:", board.name);
+  if (!newName) return;
+  const name = newName.trim();
+  if (!name) return;
+  board.name = name;
+  renderSidebar();
+  renderTasks();
+  updateBoardsCount();
+}
+const moreButton = document.getElementById("more-button")!;
+moreButton.addEventListener("click", () => {
+  const action = prompt("1. Edit Board\n2. Delete Board\n\nEnter 1 or 2:");
+  if (action === "1") {
+    editBoard();
+  }
+  if (action === "2") {
+    deleteBoard();
+  }
+});
+const board = getCurrentBoard();
+moreButton.addEventListener("click", () => {
+  editBoard();
+});
+moreButton.addEventListener("click", () => {
+  const action = prompt("1. Edit Board\n2. Delete Board\n\nEnter 1 or 2:");
+  if (action === "1") {
+    editBoard();
+  }
+  if (action === "2") {
+    deleteBoard();
+  }
+});
+function saveData(): void {
+  localStorage.setItem("kanban-boards", JSON.stringify(boards));
+  localStorage.setItem("kanban-current-board", String(currentBoardId));
+}
+function loadData(): void {
+  const savedBoards = localStorage.getItem("kanban-boards");
+  const savedBoardId = localStorage.getItem("kanban-current-board");
+  if (savedBoards) {
+    const data = JSON.parse(savedBoards);
+    boards.splice(0, boards.length, ...data);
+  }
+  if (savedBoardId) {
+    currentBoardId = Number(savedBoardId);
+  }
+}
+const themeToggle = document.getElementById("theme-toggle");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+    const isDark = document.documentElement.classList.contains("dark");
+    localStorage.setItem("kanban-theme", isDark ? "dark" : "light");
+  });
+}
+const savedTheme = localStorage.getItem("kanban-theme");
+if (savedTheme === "dark") {
+  document.documentElement.classList.add("dark");
+}
+if (savedTheme === "light") {
+  document.documentElement.classList.remove("dark");
+}
+function updateTaskAfterSubtaskChange(task: Task): void {
+  renderTasks();
+  if (selectedTaskId === task.id) {
+    renderSubtasks(task);
+  }
+  saveData();
+}
+// MOVE TASK BETWEEN COLUMNS
+
+function moveTask(taskId: number, newStatus: TaskStatus): void {
+  const board = getCurrentBoard();
+  const task = board.tasks.find((item) => item.id === taskId);
+  if (!task) return;
+  task.status = newStatus;
+  saveData();
+  renderTasks();
+}
+function createMoveSelect(task: Task): HTMLSelectElement {
+  const select = document.createElement("select");
+  select.className =
+    "mt-3 w-full rounded-md border border-[#e4ebfa] bg-white p-2 text-xs dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white";
+  select.innerHTML = `
+    <option value="todo">Todo</option>
+    <option value="doing">Doing</option>
+    <option value="done">Done</option>
+  `;
+  select.value = task.status;
+  select.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+  select.addEventListener("change", (event) => {
+    event.stopPropagation();
+    moveTask(task.id, select.value as TaskStatus);
+  });
+  return select;
+}
+const projectLinks: Record<string, string> = {
+  "Platform Launch": "",
+  "Marketing Plan": "",
+  Roadmap: "",
+  "Website Design": "",
+};
+
+function openBoardProject(board: Board): void {
+  const link = projectLinks[board.name];
+
+  if (!link) {
+    alert(`Project link for "${board.name}" is not added yet.`);
+    return;
+  }
+
+  window.open(link, "_blank");
+}
+
+function setupProjectClick(): void {
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".board-button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("dblclick", () => {
+      const boardId = Number(button.id.replace("board-", ""));
+      const board = boards.find((item) => item.id === boardId);
+
+      if (!board) return;
+
+      openBoardProject(board);
+    });
+  });
+}
+function updateProjectLinks(): void {
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".board-button");
+  buttons.forEach((button) => {
+    const boardId = Number(button.id.replace("board-", ""));
+    const board = boards.find((item) => item.id === boardId);
+    if (!board) return;
+    button.title = projectLinks[board.name]
+      ? "Open project"
+      : "Project link not added";
+  });
+}
+function refreshBoardUI(): void {
+  renderSidebar();
+  updateBoardsCount();
+  renderTasks();
+  updateProjectLinks();
+}
+function addProjectLink(boardName: string, url: string): void {
+  projectLinks[boardName] = url;
+}
+addProjectLink("Platform Launch", "");
+addProjectLink("Marketing Plan", "");
+addProjectLink("Roadmap", "");
+addProjectLink("Website Design", "");
+refreshBoardUI();
+setupProjectClick();
