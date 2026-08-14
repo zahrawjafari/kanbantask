@@ -24,180 +24,243 @@ const boards: Board[] = [
     tasks: [
       {
         id: 1,
-        title: "Build UI",
-        description: "Create the main user interface.",
+        title: "Build UI for onboarding flow",
+        description: "",
         status: "todo",
         subtasks: [
-          { id: 1, title: "Create HTML", completed: true },
-          { id: 2, title: "Add Tailwind", completed: false },
-          { id: 3, title: "Make responsive", completed: false },
+          { id: 1, title: "Create onboarding UI", completed: true },
+          { id: 2, title: "Connect onboarding flow", completed: false },
+          { id: 3, title: "Test onboarding flow", completed: false },
         ],
       },
       {
         id: 2,
-        title: "Create Login Page",
-        description: "Build the login page.",
+        title: "Build UI for search",
+        description: "",
         status: "todo",
-        subtasks: [
-          { id: 4, title: "Create form", completed: true },
-          { id: 5, title: "Add validation", completed: false },
-        ],
+        subtasks: [],
       },
       {
         id: 3,
-        title: "Design Dashboard",
-        description: "Design the dashboard.",
+        title: "Build settings UI",
+        description: "",
         status: "todo",
         subtasks: [
-          { id: 6, title: "Wireframe", completed: false },
-          { id: 7, title: "Design cards", completed: false },
+          { id: 4, title: "Create settings layout", completed: false },
+          { id: 5, title: "Add settings components", completed: false },
         ],
       },
       {
         id: 4,
-        title: "Create Header",
-        description: "Create the header.",
+        title: "QA and test all major user journeys",
+        description: "",
         status: "todo",
         subtasks: [
-          { id: 8, title: "Header HTML", completed: true },
-          { id: 9, title: "Navigation", completed: false },
+          { id: 6, title: "Test user journeys", completed: false },
+          { id: 7, title: "Fix reported issues", completed: false },
         ],
       },
       {
         id: 5,
-        title: "Create Footer",
-        description: "Create the footer.",
-        status: "todo",
+        title: "Design settings and search pages",
+        description: "",
+        status: "doing",
         subtasks: [
-          { id: 10, title: "Create footer", completed: false },
-          { id: 11, title: "Add links", completed: false },
+          { id: 8, title: "Design settings page", completed: true },
+          { id: 9, title: "Design search page", completed: true },
+          { id: 10, title: "Review designs", completed: false },
         ],
       },
       {
         id: 6,
-        title: "Add Navigation",
-        description: "Create navigation system.",
-        status: "todo",
+        title: "Add account management endpoints",
+        description: "",
+        status: "doing",
         subtasks: [
-          { id: 12, title: "Create navigation", completed: true },
-          { id: 13, title: "Add links", completed: false },
+          { id: 11, title: "Create account endpoint", completed: true },
+          { id: 12, title: "Create update endpoint", completed: true },
+          { id: 13, title: "Test endpoints", completed: false },
         ],
       },
       {
         id: 7,
-        title: "Settings Page",
-        description: "Create settings page.",
-        status: "todo",
+        title: "Design onboarding flow",
+        description: "",
+        status: "doing",
         subtasks: [
-          { id: 14, title: "Settings layout", completed: false },
-          { id: 15, title: "Settings options", completed: false },
+          { id: 14, title: "Create flow", completed: true },
+          { id: 15, title: "Review screens", completed: false },
+          { id: 16, title: "Finalize flow", completed: false },
         ],
       },
       {
         id: 8,
-        title: "Create Profile Page",
-        description: "Create the user profile page.",
+        title: "Add search endpoints",
+        description: "",
         status: "doing",
         subtasks: [
-          { id: 16, title: "Profile layout", completed: true },
-          { id: 17, title: "Profile information", completed: false },
+          { id: 17, title: "Create search endpoint", completed: true },
+          { id: 18, title: "Test search endpoint", completed: false },
         ],
       },
       {
         id: 9,
-        title: "Add Authentication",
-        description: "Add authentication functionality.",
+        title: "Add authentication endpoints",
+        description: "",
         status: "doing",
         subtasks: [
-          { id: 18, title: "Authentication logic", completed: true },
-          { id: 19, title: "Connect login", completed: true },
-          { id: 20, title: "Test authentication", completed: false },
+          {
+            id: 19,
+            title: "Create authentication endpoint",
+            completed: true,
+          },
+          { id: 20, title: "Connect authentication", completed: false },
         ],
       },
       {
         id: 10,
-        title: "Add JavaScript",
-        description: "Add JavaScript functionality.",
+        title:
+          "Research pricing points of various competitors and trial different business models",
+        description: "",
         status: "doing",
         subtasks: [
-          { id: 21, title: "Create events", completed: true },
-          { id: 22, title: "Connect buttons", completed: false },
+          {
+            id: 21,
+            title: "Research competitor pricing",
+            completed: true,
+          },
+          {
+            id: 22,
+            title: "Compare business models",
+            completed: false,
+          },
+          {
+            id: 23,
+            title: "Evaluate pricing options",
+            completed: false,
+          },
         ],
       },
       {
         id: 11,
-        title: "HTML Structure",
-        description: "Create the complete HTML structure.",
+        title: "Conduct 5 wireframe tests",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 23, title: "Main structure", completed: true },
-          { id: 24, title: "Sidebar", completed: true },
-          { id: 25, title: "Header", completed: true },
+          {
+            id: 24,
+            title: "Conduct wireframe tests",
+            completed: true,
+          },
         ],
       },
       {
         id: 12,
-        title: "Tailwind Setup",
-        description: "Configure Tailwind CSS.",
+        title: "Create wireframe prototype",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 26, title: "Install Tailwind", completed: true },
-          { id: 27, title: "Configure Tailwind", completed: true },
+          {
+            id: 25,
+            title: "Create prototype",
+            completed: true,
+          },
         ],
       },
       {
         id: 13,
-        title: "Create Sidebar",
-        description: "Create sidebar and board navigation.",
+        title: "Review results of usability tests and iterate",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 28, title: "Create sidebar", completed: true },
-          { id: 29, title: "Add boards", completed: true },
-          { id: 30, title: "Theme switch", completed: true },
+          {
+            id: 26,
+            title: "Review test results",
+            completed: true,
+          },
+          {
+            id: 27,
+            title: "Identify improvements",
+            completed: true,
+          },
+          {
+            id: 28,
+            title: "Iterate design",
+            completed: true,
+          },
         ],
       },
       {
         id: 14,
-        title: "Responsive Design",
-        description: "Make the application responsive.",
+        title:
+          "Create paper prototypes and conduct 10 usability tests with potential customers",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 31, title: "Mobile layout", completed: true },
-          { id: 32, title: "Tablet layout", completed: true },
+          {
+            id: 29,
+            title: "Create paper prototypes",
+            completed: true,
+          },
+          {
+            id: 30,
+            title: "Conduct usability tests",
+            completed: true,
+          },
         ],
       },
       {
         id: 15,
-        title: "Testing",
-        description: "Test the application.",
+        title: "Market discovery",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 33, title: "Test buttons", completed: true },
-          { id: 34, title: "Test forms", completed: true },
+          {
+            id: 31,
+            title: "Discover target market",
+            completed: true,
+          },
         ],
       },
       {
         id: 16,
-        title: "Fix Bugs",
-        description: "Fix remaining bugs.",
+        title: "Competitor analysis",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 35, title: "Find bugs", completed: true },
-          { id: 36, title: "Fix bugs", completed: true },
+          {
+            id: 32,
+            title: "Analyze competitors",
+            completed: true,
+          },
+          {
+            id: 33,
+            title: "Compare findings",
+            completed: true,
+          },
         ],
       },
       {
         id: 17,
-        title: "Final Review",
-        description: "Review the project.",
+        title: "Research the market",
+        description: "",
         status: "done",
         subtasks: [
-          { id: 37, title: "Review UI", completed: true },
-          { id: 38, title: "Review functionality", completed: true },
+          {
+            id: 34,
+            title: "Research market",
+            completed: true,
+          },
+          {
+            id: 35,
+            title: "Analyze market data",
+            completed: true,
+          },
         ],
       },
     ],
   },
+
   {
     id: 2,
     name: "Marketing Plan",
@@ -208,8 +271,16 @@ const boards: Board[] = [
         description: "Research the target market and competitors.",
         status: "todo",
         subtasks: [
-          { id: 39, title: "Research competitors", completed: false },
-          { id: 40, title: "Define target audience", completed: false },
+          {
+            id: 39,
+            title: "Research competitors",
+            completed: false,
+          },
+          {
+            id: 40,
+            title: "Define target audience",
+            completed: false,
+          },
         ],
       },
       {
@@ -218,8 +289,16 @@ const boards: Board[] = [
         description: "Create the main marketing strategy.",
         status: "todo",
         subtasks: [
-          { id: 41, title: "Create strategy", completed: false },
-          { id: 42, title: "Set goals", completed: false },
+          {
+            id: 41,
+            title: "Create strategy",
+            completed: false,
+          },
+          {
+            id: 42,
+            title: "Set goals",
+            completed: false,
+          },
         ],
       },
       {
@@ -228,8 +307,16 @@ const boards: Board[] = [
         description: "Plan the social media campaign.",
         status: "doing",
         subtasks: [
-          { id: 43, title: "Choose platforms", completed: true },
-          { id: 44, title: "Create content plan", completed: false },
+          {
+            id: 43,
+            title: "Choose platforms",
+            completed: true,
+          },
+          {
+            id: 44,
+            title: "Create content plan",
+            completed: false,
+          },
         ],
       },
       {
@@ -238,8 +325,16 @@ const boards: Board[] = [
         description: "Prepare an email marketing campaign.",
         status: "doing",
         subtasks: [
-          { id: 45, title: "Create email design", completed: true },
-          { id: 46, title: "Write email content", completed: false },
+          {
+            id: 45,
+            title: "Create email design",
+            completed: true,
+          },
+          {
+            id: 46,
+            title: "Write email content",
+            completed: false,
+          },
         ],
       },
       {
@@ -248,8 +343,16 @@ const boards: Board[] = [
         description: "Prepare the monthly marketing report.",
         status: "done",
         subtasks: [
-          { id: 47, title: "Collect data", completed: true },
-          { id: 48, title: "Create report", completed: true },
+          {
+            id: 47,
+            title: "Collect data",
+            completed: true,
+          },
+          {
+            id: 48,
+            title: "Create report",
+            completed: true,
+          },
         ],
       },
       {
@@ -258,8 +361,16 @@ const boards: Board[] = [
         description: "Review the marketing campaign results.",
         status: "done",
         subtasks: [
-          { id: 49, title: "Review results", completed: true },
-          { id: 50, title: "Prepare summary", completed: true },
+          {
+            id: 49,
+            title: "Review results",
+            completed: true,
+          },
+          {
+            id: 50,
+            title: "Prepare summary",
+            completed: true,
+          },
         ],
       },
     ],
@@ -274,8 +385,16 @@ const boards: Board[] = [
         description: "Create the roadmap for upcoming product features.",
         status: "todo",
         subtasks: [
-          { id: 51, title: "List features", completed: false },
-          { id: 52, title: "Set priorities", completed: false },
+          {
+            id: 51,
+            title: "List features",
+            completed: false,
+          },
+          {
+            id: 52,
+            title: "Set priorities",
+            completed: false,
+          },
         ],
       },
       {
@@ -284,8 +403,16 @@ const boards: Board[] = [
         description: "Create the development timeline.",
         status: "todo",
         subtasks: [
-          { id: 53, title: "Set milestones", completed: false },
-          { id: 54, title: "Create timeline", completed: false },
+          {
+            id: 53,
+            title: "Set milestones",
+            completed: false,
+          },
+          {
+            id: 54,
+            title: "Create timeline",
+            completed: false,
+          },
         ],
       },
       {
@@ -294,8 +421,16 @@ const boards: Board[] = [
         description: "Develop the main product features.",
         status: "doing",
         subtasks: [
-          { id: 55, title: "Build features", completed: true },
-          { id: 56, title: "Test features", completed: false },
+          {
+            id: 55,
+            title: "Build features",
+            completed: true,
+          },
+          {
+            id: 56,
+            title: "Test features",
+            completed: false,
+          },
         ],
       },
       {
@@ -304,8 +439,16 @@ const boards: Board[] = [
         description: "Prepare the beta version of the product.",
         status: "doing",
         subtasks: [
-          { id: 57, title: "Prepare beta", completed: true },
-          { id: 58, title: "Beta testing", completed: false },
+          {
+            id: 57,
+            title: "Prepare beta",
+            completed: true,
+          },
+          {
+            id: 58,
+            title: "Beta testing",
+            completed: false,
+          },
         ],
       },
       {
@@ -314,8 +457,16 @@ const boards: Board[] = [
         description: "Prepare the first official version.",
         status: "done",
         subtasks: [
-          { id: 59, title: "Final testing", completed: true },
-          { id: 60, title: "Prepare release", completed: true },
+          {
+            id: 59,
+            title: "Final testing",
+            completed: true,
+          },
+          {
+            id: 60,
+            title: "Prepare release",
+            completed: true,
+          },
         ],
       },
       {
@@ -324,8 +475,16 @@ const boards: Board[] = [
         description: "Plan future product updates.",
         status: "done",
         subtasks: [
-          { id: 61, title: "Collect feedback", completed: true },
-          { id: 62, title: "Plan updates", completed: true },
+          {
+            id: 61,
+            title: "Collect feedback",
+            completed: true,
+          },
+          {
+            id: 62,
+            title: "Plan updates",
+            completed: true,
+          },
         ],
       },
     ],
@@ -340,8 +499,16 @@ const boards: Board[] = [
         description: "Design the main homepage.",
         status: "todo",
         subtasks: [
-          { id: 63, title: "Create wireframe", completed: false },
-          { id: 64, title: "Choose colors", completed: false },
+          {
+            id: 63,
+            title: "Create wireframe",
+            completed: false,
+          },
+          {
+            id: 64,
+            title: "Choose colors",
+            completed: false,
+          },
         ],
       },
       {
@@ -350,8 +517,16 @@ const boards: Board[] = [
         description: "Design the website navigation.",
         status: "todo",
         subtasks: [
-          { id: 65, title: "Design menu", completed: false },
-          { id: 66, title: "Design navigation", completed: false },
+          {
+            id: 65,
+            title: "Design menu",
+            completed: false,
+          },
+          {
+            id: 66,
+            title: "Design navigation",
+            completed: false,
+          },
         ],
       },
       {
@@ -360,8 +535,16 @@ const boards: Board[] = [
         description: "Create the mobile version.",
         status: "doing",
         subtasks: [
-          { id: 67, title: "Mobile layout", completed: true },
-          { id: 68, title: "Responsive design", completed: false },
+          {
+            id: 67,
+            title: "Mobile layout",
+            completed: true,
+          },
+          {
+            id: 68,
+            title: "Responsive design",
+            completed: false,
+          },
         ],
       },
       {
@@ -370,8 +553,16 @@ const boards: Board[] = [
         description: "Design reusable UI components.",
         status: "doing",
         subtasks: [
-          { id: 69, title: "Create buttons", completed: true },
-          { id: 70, title: "Create cards", completed: false },
+          {
+            id: 69,
+            title: "Create buttons",
+            completed: true,
+          },
+          {
+            id: 70,
+            title: "Create cards",
+            completed: false,
+          },
         ],
       },
       {
@@ -380,8 +571,16 @@ const boards: Board[] = [
         description: "Complete the final website design.",
         status: "done",
         subtasks: [
-          { id: 71, title: "Review design", completed: true },
-          { id: 72, title: "Approve final version", completed: true },
+          {
+            id: 71,
+            title: "Review design",
+            completed: true,
+          },
+          {
+            id: 72,
+            title: "Approve final version",
+            completed: true,
+          },
         ],
       },
     ],
@@ -415,9 +614,15 @@ function renderTasks(): void {
       doneList.appendChild(taskElement);
     }
   });
-  todoCount.textContent = `(${board.tasks.filter((task) => task.status === "todo").length})`;
-  doingCount.textContent = `(${board.tasks.filter((task) => task.status === "doing").length})`;
-  doneCount.textContent = `(${board.tasks.filter((task) => task.status === "done").length})`;
+  todoCount.textContent = `(${
+    board.tasks.filter((task) => task.status === "todo").length
+  })`;
+  doingCount.textContent = `(${
+    board.tasks.filter((task) => task.status === "doing").length
+  })`;
+  doneCount.textContent = `(${
+    board.tasks.filter((task) => task.status === "done").length
+  })`;
   boardTitle.textContent = board.name;
 }
 function createTaskElement(task: Task): HTMLDivElement {
@@ -438,53 +643,39 @@ function createTaskElement(task: Task): HTMLDivElement {
   });
   return card;
 }
-renderTasks();
 const taskDetails = document.getElementById("task-details")!;
 const detailsTitle = document.getElementById("details-title")!;
 const detailsDescription = document.getElementById("details-description")!;
 const detailsStatus = document.getElementById(
   "details-status",
 ) as HTMLSelectElement;
-
 const detailsSubtasks = document.getElementById("details-subtasks")!;
-
 const closeDetails = document.getElementById("close-details")!;
-
 let selectedTaskId: number | null = null;
 function openTaskDetails(taskId: number): void {
   const board = getCurrentBoard();
-
   const task = board.tasks.find((item) => item.id === taskId);
-
   if (!task) return;
-
   selectedTaskId = task.id;
-
   detailsTitle.textContent = task.title;
   detailsDescription.textContent = task.description;
   detailsStatus.value = task.status;
-
   renderSubtasks(task);
-
   taskDetails.classList.remove("hidden");
   taskDetails.classList.add("flex");
 }
 function renderSubtasks(task: Task): void {
   detailsSubtasks.innerHTML = "";
-
   task.subtasks.forEach((subtask) => {
     const item = document.createElement("label");
-
     item.className =
       "flex items-center gap-3 rounded-md bg-[#f4f7fd] p-3 dark:bg-[#20212c]";
-
     item.innerHTML = `
       <input
         type="checkbox"
         class="h-4 w-4 accent-[#635fc7]"
         ${subtask.completed ? "checked" : ""}
       />
-
       <span class="text-sm ${
         subtask.completed
           ? "text-[#828fa3] line-through"
@@ -493,23 +684,19 @@ function renderSubtasks(task: Task): void {
         ${subtask.title}
       </span>
     `;
-
     const checkbox = item.querySelector("input") as HTMLInputElement;
-
     checkbox.addEventListener("change", () => {
       subtask.completed = checkbox.checked;
-
       renderSubtasks(task);
       renderTasks();
+      saveData();
     });
-
     detailsSubtasks.appendChild(item);
   });
 }
 closeDetails.addEventListener("click", () => {
   taskDetails.classList.add("hidden");
   taskDetails.classList.remove("flex");
-
   selectedTaskId = null;
 });
 detailsStatus.addEventListener("change", () => {
@@ -518,13 +705,13 @@ detailsStatus.addEventListener("change", () => {
   const task = board.tasks.find((item) => item.id === selectedTaskId);
   if (!task) return;
   task.status = detailsStatus.value as TaskStatus;
+  saveData();
   renderTasks();
 });
 taskDetails.addEventListener("click", (event) => {
   if (event.target === taskDetails) {
     taskDetails.classList.add("hidden");
     taskDetails.classList.remove("flex");
-
     selectedTaskId = null;
   }
 });
@@ -543,12 +730,16 @@ const taskStatusInput = document.getElementById(
 ) as HTMLSelectElement;
 const subtaskContainer = document.getElementById("subtask-container")!;
 addTaskButton.addEventListener("click", () => {
+  editingTaskId = null;
+  taskForm.reset();
+  subtaskContainer.innerHTML = "";
   taskModal.classList.remove("hidden");
   taskModal.classList.add("flex");
 });
 closeModal.addEventListener("click", () => {
   taskModal.classList.add("hidden");
   taskModal.classList.remove("flex");
+  editingTaskId = null;
 });
 const addSubtaskButton = document.getElementById("add-subtask")!;
 addSubtaskButton.addEventListener("click", () => {
@@ -575,14 +766,15 @@ subtaskContainer.addEventListener("click", (event) => {
     target.parentElement?.remove();
   }
 });
+let editingTaskId: number | null = null;
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const board = getCurrentBoard();
-  const inputs = document.querySelectorAll<HTMLInputElement>(".subtask-input");
+  const inputs =
+    subtaskContainer.querySelectorAll<HTMLInputElement>(".subtask-input");
   const subtasks: Subtask[] = [];
   inputs.forEach((input, index) => {
     const title = input.value.trim();
-
     if (title) {
       subtasks.push({
         id: Date.now() + index,
@@ -591,52 +783,37 @@ taskForm.addEventListener("submit", (event) => {
       });
     }
   });
-  const newTask: Task = {
-    id: Date.now(),
-    title: taskTitleInput.value.trim(),
-    description: taskDescriptionInput.value.trim(),
-    status: taskStatusInput.value as TaskStatus,
-    subtasks,
-  };
-  board.tasks.push(newTask);
+  if (editingTaskId !== null) {
+    const task = board.tasks.find((item) => item.id === editingTaskId);
+    if (task) {
+      task.title = taskTitleInput.value.trim();
+      task.description = taskDescriptionInput.value.trim();
+      task.status = taskStatusInput.value as TaskStatus;
+      task.subtasks = subtasks;
+    }
+    editingTaskId = null;
+  } else {
+    const newTask: Task = {
+      id: Date.now(),
+      title: taskTitleInput.value.trim(),
+      description: taskDescriptionInput.value.trim(),
+      status: taskStatusInput.value as TaskStatus,
+      subtasks,
+    };
+    board.tasks.push(newTask);
+  }
+  saveData();
   renderTasks();
   taskForm.reset();
+  subtaskContainer.innerHTML = "";
   taskModal.classList.add("hidden");
   taskModal.classList.remove("flex");
+  taskDetails.classList.add("hidden");
+  taskDetails.classList.remove("flex");
+  selectedTaskId = null;
 });
 const editTaskButton = document.getElementById("edit-task")!;
 const deleteTaskButton = document.getElementById("delete-task")!;
-editTaskButton.addEventListener("click", () => {
-  if (selectedTaskId === null) return;
-  const board = getCurrentBoard();
-  const task = board.tasks.find((item) => item.id === selectedTaskId);
-  if (!task) return;
-  taskModal.classList.remove("hidden");
-  taskModal.classList.add("flex");
-  taskTitleInput.value = task.title;
-  taskDescriptionInput.value = task.description;
-  taskStatusInput.value = task.status;
-  subtaskContainer.innerHTML = "";
-  task.subtasks.forEach((subtask) => {
-    const wrapper = document.createElement("div");
-    wrapper.className = "flex gap-3";
-    wrapper.innerHTML = `
-      <input
-        type="text"
-        value="${subtask.title}"
-        class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white"
-      />
-      <button
-        type="button"
-        class="remove-subtask px-2 text-xl font-bold text-[#828fa3]"
-      >
-        ×
-      </button>
-    `;
-    subtaskContainer.appendChild(wrapper);
-  });
-});
-let editingTaskId: number | null = null;
 editTaskButton.addEventListener("click", () => {
   if (selectedTaskId === null) return;
   const board = getCurrentBoard();
@@ -670,47 +847,6 @@ editTaskButton.addEventListener("click", () => {
   taskModal.classList.remove("hidden");
   taskModal.classList.add("flex");
 });
-taskForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const board = getCurrentBoard();
-  const inputs = document.querySelectorAll<HTMLInputElement>(".subtask-input");
-  const subtasks: Subtask[] = [];
-  inputs.forEach((input, index) => {
-    const title = input.value.trim();
-
-    if (title) {
-      subtasks.push({
-        id: Date.now() + index,
-        title,
-        completed: false,
-      });
-    }
-  });
-  if (editingTaskId !== null) {
-    const task = board.tasks.find((item) => item.id === editingTaskId);
-    if (task) {
-      task.title = taskTitleInput.value.trim();
-      task.description = taskDescriptionInput.value.trim();
-      task.status = taskStatusInput.value as TaskStatus;
-      task.subtasks = subtasks;
-    }
-    editingTaskId = null;
-  } else {
-    board.tasks.push({
-      id: Date.now(),
-      title: taskTitleInput.value.trim(),
-      description: taskDescriptionInput.value.trim(),
-      status: taskStatusInput.value as TaskStatus,
-      subtasks,
-    });
-  }
-  renderTasks();
-  taskForm.reset();
-  taskModal.classList.add("hidden");
-  taskModal.classList.remove("flex");
-  taskDetails.classList.add("hidden");
-  taskDetails.classList.remove("flex");
-});
 deleteTaskButton.addEventListener("click", () => {
   if (selectedTaskId === null) return;
   const board = getCurrentBoard();
@@ -720,94 +856,23 @@ deleteTaskButton.addEventListener("click", () => {
   selectedTaskId = null;
   taskDetails.classList.add("hidden");
   taskDetails.classList.remove("flex");
-  renderTasks();
-});
-taskForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const board = getCurrentBoard();
-  const inputs = document.querySelectorAll<HTMLInputElement>(".subtask-input");
-  const subtasks: Subtask[] = [];
-  inputs.forEach((input, index) => {
-    const title = input.value.trim();
-    if (title) {
-      subtasks.push({
-        id: Date.now() + index,
-        title,
-        completed: false,
-      });
-    }
-  });
-  if (editingTaskId !== null) {
-    const task = board.tasks.find((item) => item.id === editingTaskId);
-
-    if (task) {
-      task.title = taskTitleInput.value.trim();
-      task.description = taskDescriptionInput.value.trim();
-      task.status = taskStatusInput.value as TaskStatus;
-      task.subtasks = subtasks;
-    }
-    editingTaskId = null;
-  } else {
-    board.tasks.push({
-      id: Date.now(),
-      title: taskTitleInput.value.trim(),
-      description: taskDescriptionInput.value.trim(),
-      status: taskStatusInput.value as TaskStatus,
-      subtasks,
-    });
-  }
-  renderTasks();
-  taskForm.reset();
-  subtaskContainer.innerHTML = `
-    <div class="flex gap-3">
-      <input
-        type="text"
-        placeholder="e.g. Make coffee"
-        class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white"
-      />
-      <button
-        type="button"
-        class="remove-subtask px-2 text-xl font-bold text-[#828fa3] hover:text-[#ea5555]"
-      >
-        ×
-      </button>
-    </div>
-  `;
-  taskModal.classList.add("hidden");
-  taskModal.classList.remove("flex");
-});
-deleteTaskButton.addEventListener("click", () => {
-  if (selectedTaskId === null) return;
-  const board = getCurrentBoard();
-  const taskIndex = board.tasks.findIndex((task) => task.id === selectedTaskId);
-  if (taskIndex === -1) return;
-  const confirmed = confirm("Are you sure you want to delete this task?");
-  if (!confirmed) return;
-  board.tasks.splice(taskIndex, 1);
-  selectedTaskId = null;
-  editingTaskId = null;
-  taskDetails.classList.add("hidden");
-  taskDetails.classList.remove("flex");
+  saveData();
   renderTasks();
 });
 const boardButtons =
   document.querySelectorAll<HTMLButtonElement>(".board-button");
-
 boardButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const boardId = Number(button.id.replace("board-", ""));
-
     currentBoardId = boardId;
-
     renderTasks();
-
     boardButtons.forEach((item) => {
       item.classList.remove("bg-[#635fc7]", "text-white");
       item.classList.add("text-[#828fa3]");
     });
-
     button.classList.add("bg-[#635fc7]", "text-white");
     button.classList.remove("text-[#828fa3]");
+    saveData();
   });
 });
 const createBoardButton = document.getElementById("create-board")!;
@@ -837,9 +902,14 @@ boardForm.addEventListener("submit", (event) => {
     tasks: [],
   };
   boards.push(newBoard);
+  currentBoardId = newBoard.id;
   boardForm.reset();
   boardModal.classList.add("hidden");
   boardModal.classList.remove("flex");
+  saveData();
+  renderSidebar();
+  updateBoardsCount();
+  renderTasks();
 });
 const boardsNav = document.querySelector("nav")!;
 function renderSidebar(): void {
@@ -849,6 +919,7 @@ function renderSidebar(): void {
   });
   boards.forEach((board) => {
     const button = document.createElement("button");
+    button.id = `board-${board.id}`;
     button.className =
       "board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]";
     if (board.id === currentBoardId) {
@@ -863,6 +934,8 @@ function renderSidebar(): void {
       currentBoardId = board.id;
       renderSidebar();
       renderTasks();
+      updateProjectLinks();
+      saveData();
     });
     boardsNav.insertBefore(button, createButton);
   });
@@ -871,10 +944,6 @@ const boardsCount = document.getElementById("boards-count")!;
 function updateBoardsCount(): void {
   boardsCount.textContent = `All Boards (${boards.length})`;
 }
-loadData();
-renderSidebar();
-updateBoardsCount();
-renderTasks();
 function editBoard(): void {
   const board = getCurrentBoard();
   const newName = prompt("Enter new board name:", board.name);
@@ -882,24 +951,29 @@ function editBoard(): void {
   const name = newName.trim();
   if (!name) return;
   board.name = name;
+  saveData();
   renderSidebar();
   renderTasks();
   updateBoardsCount();
 }
+function deleteBoard(): void {
+  if (boards.length <= 1) {
+    alert("You cannot delete the last board.");
+    return;
+  }
+  const board = getCurrentBoard();
+  const confirmed = confirm(`Delete "${board.name}"?`);
+  if (!confirmed) return;
+  const index = boards.findIndex((item) => item.id === board.id);
+  if (index === -1) return;
+  boards.splice(index, 1);
+  currentBoardId = boards[0].id;
+  saveData();
+  renderSidebar();
+  updateBoardsCount();
+  renderTasks();
+}
 const moreButton = document.getElementById("more-button")!;
-moreButton.addEventListener("click", () => {
-  const action = prompt("1. Edit Board\n2. Delete Board\n\nEnter 1 or 2:");
-  if (action === "1") {
-    editBoard();
-  }
-  if (action === "2") {
-    deleteBoard();
-  }
-});
-const board = getCurrentBoard();
-moreButton.addEventListener("click", () => {
-  editBoard();
-});
 moreButton.addEventListener("click", () => {
   const action = prompt("1. Edit Board\n2. Delete Board\n\nEnter 1 or 2:");
   if (action === "1") {
@@ -917,11 +991,20 @@ function loadData(): void {
   const savedBoards = localStorage.getItem("kanban-boards");
   const savedBoardId = localStorage.getItem("kanban-current-board");
   if (savedBoards) {
-    const data = JSON.parse(savedBoards);
-    boards.splice(0, boards.length, ...data);
+    try {
+      const data = JSON.parse(savedBoards) as Board[];
+      if (Array.isArray(data)) {
+        boards.splice(0, boards.length, ...data);
+      }
+    } catch {
+      localStorage.removeItem("kanban-boards");
+    }
   }
   if (savedBoardId) {
-    currentBoardId = Number(savedBoardId);
+    const id = Number(savedBoardId);
+    if (boards.some((board) => board.id === id)) {
+      currentBoardId = id;
+    }
   }
 }
 const themeToggle = document.getElementById("theme-toggle");
@@ -946,8 +1029,6 @@ function updateTaskAfterSubtaskChange(task: Task): void {
   }
   saveData();
 }
-// MOVE TASK BETWEEN COLUMNS
-
 function moveTask(taskId: number, newStatus: TaskStatus): void {
   const board = getCurrentBoard();
   const task = board.tasks.find((item) => item.id === taskId);
@@ -981,28 +1062,20 @@ const projectLinks: Record<string, string> = {
   Roadmap: "",
   "Website Design": "",
 };
-
 function openBoardProject(board: Board): void {
   const link = projectLinks[board.name];
-
   if (!link) {
-    alert(`Project link for "${board.name}" is not added yet.`);
     return;
   }
-
   window.open(link, "_blank");
 }
-
 function setupProjectClick(): void {
   const buttons = document.querySelectorAll<HTMLButtonElement>(".board-button");
-
   buttons.forEach((button) => {
     button.addEventListener("dblclick", () => {
       const boardId = Number(button.id.replace("board-", ""));
       const board = boards.find((item) => item.id === boardId);
-
       if (!board) return;
-
       openBoardProject(board);
     });
   });
@@ -1013,9 +1086,7 @@ function updateProjectLinks(): void {
     const boardId = Number(button.id.replace("board-", ""));
     const board = boards.find((item) => item.id === boardId);
     if (!board) return;
-    button.title = projectLinks[board.name]
-      ? "Open project"
-      : "Project link not added";
+    button.title = projectLinks[board.name] ? "Open project" : "";
   });
 }
 function refreshBoardUI(): void {
@@ -1031,5 +1102,5 @@ addProjectLink("Platform Launch", "");
 addProjectLink("Marketing Plan", "");
 addProjectLink("Roadmap", "");
 addProjectLink("Website Design", "");
+loadData();
 refreshBoardUI();
-setupProjectClick();
