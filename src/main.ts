@@ -1,10 +1,13 @@
 import "./style.css";
+
 type TaskStatus = "todo" | "doing" | "done";
+
 interface Subtask {
   id: number;
   title: string;
   completed: boolean;
 }
+
 interface Task {
   id: number;
   title: string;
@@ -12,11 +15,18 @@ interface Task {
   status: TaskStatus;
   subtasks: Subtask[];
 }
+
 interface Board {
   id: number;
   name: string;
   tasks: Task[];
 }
+
+interface Column {
+  id: number;
+  name: string;
+}
+
 const boards: Board[] = [
   {
     id: 1,
@@ -25,88 +35,161 @@ const boards: Board[] = [
       {
         id: 1,
         title: "Build UI for onboarding flow",
-        description: "",
+        description:
+          "Create the onboarding interface and connect the user flow.",
         status: "todo",
         subtasks: [
-          { id: 1, title: "Create onboarding UI", completed: true },
-          { id: 2, title: "Connect onboarding flow", completed: false },
-          { id: 3, title: "Test onboarding flow", completed: false },
+          {
+            id: 1,
+            title: "Create onboarding UI",
+            completed: true,
+          },
+          {
+            id: 2,
+            title: "Connect onboarding flow",
+            completed: false,
+          },
+          {
+            id: 3,
+            title: "Test onboarding flow",
+            completed: false,
+          },
         ],
       },
       {
         id: 2,
         title: "Build UI for search",
-        description: "",
+        description: "Create the search interface.",
         status: "todo",
         subtasks: [],
       },
       {
         id: 3,
         title: "Build settings UI",
-        description: "",
+        description: "Create the settings page.",
         status: "todo",
         subtasks: [
-          { id: 4, title: "Create settings layout", completed: false },
-          { id: 5, title: "Add settings components", completed: false },
+          {
+            id: 4,
+            title: "Create settings layout",
+            completed: false,
+          },
+          {
+            id: 5,
+            title: "Add settings components",
+            completed: false,
+          },
         ],
       },
       {
         id: 4,
         title: "QA and test all major user journeys",
-        description: "",
+        description: "Test all important user journeys.",
         status: "todo",
         subtasks: [
-          { id: 6, title: "Test user journeys", completed: false },
-          { id: 7, title: "Fix reported issues", completed: false },
+          {
+            id: 6,
+            title: "Test user journeys",
+            completed: false,
+          },
+          {
+            id: 7,
+            title: "Fix reported issues",
+            completed: false,
+          },
         ],
       },
       {
         id: 5,
         title: "Design settings and search pages",
-        description: "",
+        description: "Design settings and search pages.",
         status: "doing",
         subtasks: [
-          { id: 8, title: "Design settings page", completed: true },
-          { id: 9, title: "Design search page", completed: true },
-          { id: 10, title: "Review designs", completed: false },
+          {
+            id: 8,
+            title: "Design settings page",
+            completed: true,
+          },
+          {
+            id: 9,
+            title: "Design search page",
+            completed: true,
+          },
+          {
+            id: 10,
+            title: "Review designs",
+            completed: false,
+          },
         ],
       },
       {
         id: 6,
         title: "Add account management endpoints",
-        description: "",
+        description: "Create account management endpoints.",
         status: "doing",
         subtasks: [
-          { id: 11, title: "Create account endpoint", completed: true },
-          { id: 12, title: "Create update endpoint", completed: true },
-          { id: 13, title: "Test endpoints", completed: false },
+          {
+            id: 11,
+            title: "Create account endpoint",
+            completed: true,
+          },
+          {
+            id: 12,
+            title: "Create update endpoint",
+            completed: true,
+          },
+          {
+            id: 13,
+            title: "Test endpoints",
+            completed: false,
+          },
         ],
       },
       {
         id: 7,
         title: "Design onboarding flow",
-        description: "",
+        description: "Design the complete onboarding flow.",
         status: "doing",
         subtasks: [
-          { id: 14, title: "Create flow", completed: true },
-          { id: 15, title: "Review screens", completed: false },
-          { id: 16, title: "Finalize flow", completed: false },
+          {
+            id: 14,
+            title: "Create flow",
+            completed: true,
+          },
+          {
+            id: 15,
+            title: "Review screens",
+            completed: false,
+          },
+          {
+            id: 16,
+            title: "Finalize flow",
+            completed: false,
+          },
         ],
       },
       {
         id: 8,
         title: "Add search endpoints",
-        description: "",
+        description: "Create search endpoints.",
         status: "doing",
         subtasks: [
-          { id: 17, title: "Create search endpoint", completed: true },
-          { id: 18, title: "Test search endpoint", completed: false },
+          {
+            id: 17,
+            title: "Create search endpoint",
+            completed: true,
+          },
+          {
+            id: 18,
+            title: "Test search endpoint",
+            completed: false,
+          },
         ],
       },
       {
         id: 9,
         title: "Add authentication endpoints",
-        description: "",
+        description: "Create authentication endpoints.",
         status: "doing",
         subtasks: [
           {
@@ -114,14 +197,17 @@ const boards: Board[] = [
             title: "Create authentication endpoint",
             completed: true,
           },
-          { id: 20, title: "Connect authentication", completed: false },
+          {
+            id: 20,
+            title: "Connect authentication",
+            completed: false,
+          },
         ],
       },
       {
         id: 10,
-        title:
-          "Research pricing points of various competitors and trial different business models",
-        description: "",
+        title: "Research pricing points of various competitors",
+        description: "Research competitors and different pricing models.",
         status: "doing",
         subtasks: [
           {
@@ -144,7 +230,7 @@ const boards: Board[] = [
       {
         id: 11,
         title: "Conduct 5 wireframe tests",
-        description: "",
+        description: "Conduct wireframe usability tests.",
         status: "done",
         subtasks: [
           {
@@ -157,7 +243,7 @@ const boards: Board[] = [
       {
         id: 12,
         title: "Create wireframe prototype",
-        description: "",
+        description: "Create the wireframe prototype.",
         status: "done",
         subtasks: [
           {
@@ -169,8 +255,8 @@ const boards: Board[] = [
       },
       {
         id: 13,
-        title: "Review results of usability tests and iterate",
-        description: "",
+        title: "Review results of usability tests",
+        description: "Review test results and improve the design.",
         status: "done",
         subtasks: [
           {
@@ -186,74 +272,6 @@ const boards: Board[] = [
           {
             id: 28,
             title: "Iterate design",
-            completed: true,
-          },
-        ],
-      },
-      {
-        id: 14,
-        title:
-          "Create paper prototypes and conduct 10 usability tests with potential customers",
-        description: "",
-        status: "done",
-        subtasks: [
-          {
-            id: 29,
-            title: "Create paper prototypes",
-            completed: true,
-          },
-          {
-            id: 30,
-            title: "Conduct usability tests",
-            completed: true,
-          },
-        ],
-      },
-      {
-        id: 15,
-        title: "Market discovery",
-        description: "",
-        status: "done",
-        subtasks: [
-          {
-            id: 31,
-            title: "Discover target market",
-            completed: true,
-          },
-        ],
-      },
-      {
-        id: 16,
-        title: "Competitor analysis",
-        description: "",
-        status: "done",
-        subtasks: [
-          {
-            id: 32,
-            title: "Analyze competitors",
-            completed: true,
-          },
-          {
-            id: 33,
-            title: "Compare findings",
-            completed: true,
-          },
-        ],
-      },
-      {
-        id: 17,
-        title: "Research the market",
-        description: "",
-        status: "done",
-        subtasks: [
-          {
-            id: 34,
-            title: "Research market",
-            completed: true,
-          },
-          {
-            id: 35,
-            title: "Analyze market data",
             completed: true,
           },
         ],
@@ -355,26 +373,9 @@ const boards: Board[] = [
           },
         ],
       },
-      {
-        id: 23,
-        title: "Campaign Review",
-        description: "Review the marketing campaign results.",
-        status: "done",
-        subtasks: [
-          {
-            id: 49,
-            title: "Review results",
-            completed: true,
-          },
-          {
-            id: 50,
-            title: "Prepare summary",
-            completed: true,
-          },
-        ],
-      },
     ],
   },
+
   {
     id: 3,
     name: "Roadmap",
@@ -436,7 +437,7 @@ const boards: Board[] = [
       {
         id: 27,
         title: "Beta Release",
-        description: "Prepare the beta version of the product.",
+        description: "Prepare the beta version.",
         status: "doing",
         subtasks: [
           {
@@ -454,7 +455,7 @@ const boards: Board[] = [
       {
         id: 28,
         title: "Version 1 Release",
-        description: "Prepare the first official version.",
+        description: "Prepare the first official release.",
         status: "done",
         subtasks: [
           {
@@ -469,26 +470,9 @@ const boards: Board[] = [
           },
         ],
       },
-      {
-        id: 29,
-        title: "Future Updates",
-        description: "Plan future product updates.",
-        status: "done",
-        subtasks: [
-          {
-            id: 61,
-            title: "Collect feedback",
-            completed: true,
-          },
-          {
-            id: 62,
-            title: "Plan updates",
-            completed: true,
-          },
-        ],
-      },
     ],
   },
+
   {
     id: 4,
     name: "Website Design",
@@ -586,63 +570,53 @@ const boards: Board[] = [
     ],
   },
 ];
+
+// ==============================
+// STATE
+// ==============================
+
 let currentBoardId = 1;
+let selectedTaskId: number | null = null;
+let editingTaskId: number | null = null;
+let taskToDeleteId: number | null = null;
+
+const columns: Column[] = [
+  {
+    id: 1,
+    name: "Todo",
+  },
+  {
+    id: 2,
+    name: "Doing",
+  },
+  {
+    id: 3,
+    name: "Done",
+  },
+];
+
+// ==============================
+// DOM
+// ==============================
+
+const sidebar = document.getElementById("sidebar")!;
+const mainContent = document.getElementById("main-content")!;
+
+const boardsNav = document.getElementById("boards-nav")!;
+const boardsCount = document.getElementById("boards-count")!;
+
+const boardTitle = document.getElementById("board-title")!;
+
 const todoList = document.getElementById("todo-list")!;
 const doingList = document.getElementById("doing-list")!;
 const doneList = document.getElementById("done-list")!;
+
 const todoCount = document.getElementById("todo-count")!;
 const doingCount = document.getElementById("doing-count")!;
 const doneCount = document.getElementById("done-count")!;
-const boardTitle = document.getElementById("board-title")!;
-function getCurrentBoard(): Board {
-  return boards.find((board) => board.id === currentBoardId)!;
-}
-function renderTasks(): void {
-  const board = getCurrentBoard();
-  todoList.innerHTML = "";
-  doingList.innerHTML = "";
-  doneList.innerHTML = "";
-  board.tasks.forEach((task) => {
-    const taskElement = createTaskElement(task);
-    if (task.status === "todo") {
-      todoList.appendChild(taskElement);
-    }
-    if (task.status === "doing") {
-      doingList.appendChild(taskElement);
-    }
-    if (task.status === "done") {
-      doneList.appendChild(taskElement);
-    }
-  });
-  todoCount.textContent = `(${
-    board.tasks.filter((task) => task.status === "todo").length
-  })`;
-  doingCount.textContent = `(${
-    board.tasks.filter((task) => task.status === "doing").length
-  })`;
-  doneCount.textContent = `(${
-    board.tasks.filter((task) => task.status === "done").length
-  })`;
-  boardTitle.textContent = board.name;
-}
-function createTaskElement(task: Task): HTMLDivElement {
-  const card = document.createElement("div");
-  card.className =
-    "cursor-pointer rounded-lg bg-white p-5 shadow-sm hover:shadow-md dark:bg-[#2b2c37]";
-  const completed = task.subtasks.filter((subtask) => subtask.completed).length;
-  card.innerHTML = `
-    <h3 class="mb-2 font-bold text-[#2b2c37] dark:text-white">
-      ${task.title}
-    </h3>
-    <p class="text-xs font-bold text-[#828fa3]">
-      ${completed} of ${task.subtasks.length} subtasks
-    </p>
-  `;
-  card.addEventListener("click", () => {
-    openTaskDetails(task.id);
-  });
-  return card;
-}
+
+const addTaskButton = document.getElementById("add-task")!;
+
 const taskDetails = document.getElementById("task-details")!;
 const detailsTitle = document.getElementById("details-title")!;
 const detailsDescription = document.getElementById("details-description")!;
@@ -650,75 +624,23 @@ const detailsStatus = document.getElementById(
   "details-status",
 ) as HTMLSelectElement;
 const detailsSubtasks = document.getElementById("details-subtasks")!;
+
+const taskMenuButton = document.getElementById("task-menu-button")!;
+const taskMenu = document.getElementById("task-menu")!;
+
 const closeDetails = document.getElementById("close-details")!;
-let selectedTaskId: number | null = null;
-function openTaskDetails(taskId: number): void {
-  const board = getCurrentBoard();
-  const task = board.tasks.find((item) => item.id === taskId);
-  if (!task) return;
-  selectedTaskId = task.id;
-  detailsTitle.textContent = task.title;
-  detailsDescription.textContent = task.description;
-  detailsStatus.value = task.status;
-  renderSubtasks(task);
-  taskDetails.classList.remove("hidden");
-  taskDetails.classList.add("flex");
-}
-function renderSubtasks(task: Task): void {
-  detailsSubtasks.innerHTML = "";
-  task.subtasks.forEach((subtask) => {
-    const item = document.createElement("label");
-    item.className =
-      "flex items-center gap-3 rounded-md bg-[#f4f7fd] p-3 dark:bg-[#20212c]";
-    item.innerHTML = `
-      <input
-        type="checkbox"
-        class="h-4 w-4 accent-[#635fc7]"
-        ${subtask.completed ? "checked" : ""}
-      />
-      <span class="text-sm ${
-        subtask.completed
-          ? "text-[#828fa3] line-through"
-          : "text-[#2b2c37] dark:text-white"
-      }">
-        ${subtask.title}
-      </span>
-    `;
-    const checkbox = item.querySelector("input") as HTMLInputElement;
-    checkbox.addEventListener("change", () => {
-      subtask.completed = checkbox.checked;
-      renderSubtasks(task);
-      renderTasks();
-      saveData();
-    });
-    detailsSubtasks.appendChild(item);
-  });
-}
-closeDetails.addEventListener("click", () => {
-  taskDetails.classList.add("hidden");
-  taskDetails.classList.remove("flex");
-  selectedTaskId = null;
-});
-detailsStatus.addEventListener("change", () => {
-  if (selectedTaskId === null) return;
-  const board = getCurrentBoard();
-  const task = board.tasks.find((item) => item.id === selectedTaskId);
-  if (!task) return;
-  task.status = detailsStatus.value as TaskStatus;
-  saveData();
-  renderTasks();
-});
-taskDetails.addEventListener("click", (event) => {
-  if (event.target === taskDetails) {
-    taskDetails.classList.add("hidden");
-    taskDetails.classList.remove("flex");
-    selectedTaskId = null;
-  }
-});
+const editTaskButton = document.getElementById("edit-task")!;
+const deleteTaskButton = document.getElementById("delete-task")!;
+
+const deleteModal = document.getElementById("delete-modal")!;
+const deleteMessage = document.getElementById("delete-message")!;
+const confirmDelete = document.getElementById("confirm-delete")!;
+const cancelDelete = document.getElementById("cancel-delete")!;
+
 const taskModal = document.getElementById("task-modal")!;
-const addTaskButton = document.getElementById("add-task")!;
-const closeModal = document.getElementById("close-modal")!;
+const taskModalTitle = document.getElementById("task-modal-title")!;
 const taskForm = document.getElementById("task-form") as HTMLFormElement;
+
 const taskTitleInput = document.getElementById(
   "task-title",
 ) as HTMLInputElement;
@@ -728,153 +650,13 @@ const taskDescriptionInput = document.getElementById(
 const taskStatusInput = document.getElementById(
   "task-status",
 ) as HTMLSelectElement;
-const subtaskContainer = document.getElementById("subtask-container")!;
-addTaskButton.addEventListener("click", () => {
-  editingTaskId = null;
-  taskForm.reset();
-  subtaskContainer.innerHTML = "";
-  taskModal.classList.remove("hidden");
-  taskModal.classList.add("flex");
-});
-closeModal.addEventListener("click", () => {
-  taskModal.classList.add("hidden");
-  taskModal.classList.remove("flex");
-  editingTaskId = null;
-});
+
+const submitTaskButton = document.getElementById("submit-task")!;
+
+const closeModal = document.getElementById("close-modal")!;
 const addSubtaskButton = document.getElementById("add-subtask")!;
-addSubtaskButton.addEventListener("click", () => {
-  const wrapper = document.createElement("div");
-  wrapper.className = "flex gap-3";
-  wrapper.innerHTML = `
-    <input
-      type="text"
-      placeholder="e.g. Make coffee"
-      class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white"
-    />
-    <button
-      type="button"
-      class="remove-subtask px-2 text-xl font-bold text-[#828fa3] hover:text-[#ea5555]"
-    >
-      ×
-    </button>
-  `;
-  subtaskContainer.appendChild(wrapper);
-});
-subtaskContainer.addEventListener("click", (event) => {
-  const target = event.target as HTMLElement;
-  if (target.classList.contains("remove-subtask")) {
-    target.parentElement?.remove();
-  }
-});
-let editingTaskId: number | null = null;
-taskForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const board = getCurrentBoard();
-  const inputs =
-    subtaskContainer.querySelectorAll<HTMLInputElement>(".subtask-input");
-  const subtasks: Subtask[] = [];
-  inputs.forEach((input, index) => {
-    const title = input.value.trim();
-    if (title) {
-      subtasks.push({
-        id: Date.now() + index,
-        title,
-        completed: false,
-      });
-    }
-  });
-  if (editingTaskId !== null) {
-    const task = board.tasks.find((item) => item.id === editingTaskId);
-    if (task) {
-      task.title = taskTitleInput.value.trim();
-      task.description = taskDescriptionInput.value.trim();
-      task.status = taskStatusInput.value as TaskStatus;
-      task.subtasks = subtasks;
-    }
-    editingTaskId = null;
-  } else {
-    const newTask: Task = {
-      id: Date.now(),
-      title: taskTitleInput.value.trim(),
-      description: taskDescriptionInput.value.trim(),
-      status: taskStatusInput.value as TaskStatus,
-      subtasks,
-    };
-    board.tasks.push(newTask);
-  }
-  saveData();
-  renderTasks();
-  taskForm.reset();
-  subtaskContainer.innerHTML = "";
-  taskModal.classList.add("hidden");
-  taskModal.classList.remove("flex");
-  taskDetails.classList.add("hidden");
-  taskDetails.classList.remove("flex");
-  selectedTaskId = null;
-});
-const editTaskButton = document.getElementById("edit-task")!;
-const deleteTaskButton = document.getElementById("delete-task")!;
-editTaskButton.addEventListener("click", () => {
-  if (selectedTaskId === null) return;
-  const board = getCurrentBoard();
-  const task = board.tasks.find((item) => item.id === selectedTaskId);
-  if (!task) return;
-  editingTaskId = task.id;
-  taskTitleInput.value = task.title;
-  taskDescriptionInput.value = task.description;
-  taskStatusInput.value = task.status;
-  subtaskContainer.innerHTML = "";
-  task.subtasks.forEach((subtask) => {
-    const wrapper = document.createElement("div");
-    wrapper.className = "flex gap-3";
-    wrapper.innerHTML = `
-      <input
-        type="text"
-        value="${subtask.title}"
-        class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white"
-      />
-      <button
-        type="button"
-        class="remove-subtask px-2 text-xl font-bold text-[#828fa3] hover:text-[#ea5555]"
-      >
-        ×
-      </button>
-    `;
-    subtaskContainer.appendChild(wrapper);
-  });
-  taskDetails.classList.add("hidden");
-  taskDetails.classList.remove("flex");
-  taskModal.classList.remove("hidden");
-  taskModal.classList.add("flex");
-});
-deleteTaskButton.addEventListener("click", () => {
-  if (selectedTaskId === null) return;
-  const board = getCurrentBoard();
-  const index = board.tasks.findIndex((task) => task.id === selectedTaskId);
-  if (index === -1) return;
-  board.tasks.splice(index, 1);
-  selectedTaskId = null;
-  taskDetails.classList.add("hidden");
-  taskDetails.classList.remove("flex");
-  saveData();
-  renderTasks();
-});
-const boardButtons =
-  document.querySelectorAll<HTMLButtonElement>(".board-button");
-boardButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const boardId = Number(button.id.replace("board-", ""));
-    currentBoardId = boardId;
-    renderTasks();
-    boardButtons.forEach((item) => {
-      item.classList.remove("bg-[#635fc7]", "text-white");
-      item.classList.add("text-[#828fa3]");
-    });
-    button.classList.add("bg-[#635fc7]", "text-white");
-    button.classList.remove("text-[#828fa3]");
-    saveData();
-  });
-});
+const subtaskContainer = document.getElementById("subtask-container")!;
+
 const createBoardButton = document.getElementById("create-board")!;
 const boardModal = document.getElementById("board-modal")!;
 const closeBoardModal = document.getElementById("close-board-modal")!;
@@ -882,225 +664,821 @@ const boardForm = document.getElementById("board-form") as HTMLFormElement;
 const boardNameInput = document.getElementById(
   "board-name",
 ) as HTMLInputElement;
-createBoardButton.addEventListener("click", () => {
-  boardModal.classList.remove("hidden");
-  boardModal.classList.add("flex");
-  boardNameInput.focus();
-});
-closeBoardModal.addEventListener("click", () => {
-  boardModal.classList.add("hidden");
-  boardModal.classList.remove("flex");
-  boardForm.reset();
-});
-boardForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = boardNameInput.value.trim();
-  if (!name) return;
-  const newBoard: Board = {
-    id: Date.now(),
-    name,
-    tasks: [],
-  };
-  boards.push(newBoard);
-  currentBoardId = newBoard.id;
-  boardForm.reset();
-  boardModal.classList.add("hidden");
-  boardModal.classList.remove("flex");
-  saveData();
-  renderSidebar();
-  updateBoardsCount();
-  renderTasks();
-});
-const boardsNav = document.querySelector("nav")!;
-function renderSidebar(): void {
-  const createButton = document.getElementById("create-board")!;
-  boardsNav.querySelectorAll(".board-button").forEach((button) => {
-    button.remove();
-  });
-  boards.forEach((board) => {
-    const button = document.createElement("button");
-    button.id = `board-${board.id}`;
-    button.className =
-      "board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left text-[#828fa3] hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]";
-    if (board.id === currentBoardId) {
-      button.classList.add("bg-[#635fc7]", "text-white");
-      button.classList.remove("text-[#828fa3]");
-    }
-    button.innerHTML = `
-      <span>▰</span>
-      <span>${board.name}</span>
-    `;
-    button.addEventListener("click", () => {
-      currentBoardId = board.id;
-      renderSidebar();
-      renderTasks();
-      updateProjectLinks();
-      saveData();
-    });
-    boardsNav.insertBefore(button, createButton);
-  });
-}
-const boardsCount = document.getElementById("boards-count")!;
-function updateBoardsCount(): void {
-  boardsCount.textContent = `All Boards (${boards.length})`;
-}
-function editBoard(): void {
-  const board = getCurrentBoard();
-  const newName = prompt("Enter new board name:", board.name);
-  if (!newName) return;
-  const name = newName.trim();
-  if (!name) return;
-  board.name = name;
-  saveData();
-  renderSidebar();
-  renderTasks();
-  updateBoardsCount();
-}
-function deleteBoard(): void {
-  if (boards.length <= 1) {
-    alert("You cannot delete the last board.");
-    return;
+
+const boardMenuButton = document.getElementById("board-menu-button")!;
+const boardMenu = document.getElementById("board-menu")!;
+const editBoardButton = document.getElementById("edit-board")!;
+const deleteBoardButton = document.getElementById("delete-board")!;
+
+const themeToggle = document.getElementById("theme-toggle")!;
+
+const hideSidebarButton = document.getElementById("hide-sidebar")!;
+const showSidebarButton = document.getElementById("show-sidebar")!;
+
+const newColumnButton = document.getElementById("new-column")!;
+const columnModal = document.getElementById("column-modal")!;
+const closeColumnModal = document.getElementById("close-column-modal")!;
+const columnForm = document.getElementById("column-form") as HTMLFormElement;
+const columnNameInput = document.getElementById(
+  "column-name",
+) as HTMLInputElement;
+
+// ==============================
+// CURRENT BOARD
+// ==============================
+
+function getCurrentBoard(): Board {
+  const board = boards.find((item) => item.id === currentBoardId);
+
+  if (!board) {
+    return boards[0];
   }
-  const board = getCurrentBoard();
-  const confirmed = confirm(`Delete "${board.name}"?`);
-  if (!confirmed) return;
-  const index = boards.findIndex((item) => item.id === board.id);
-  if (index === -1) return;
-  boards.splice(index, 1);
-  currentBoardId = boards[0].id;
-  saveData();
-  renderSidebar();
-  updateBoardsCount();
-  renderTasks();
+
+  return board;
 }
-const moreButton = document.getElementById("more-button")!;
-moreButton.addEventListener("click", () => {
-  const action = prompt("1. Edit Board\n2. Delete Board\n\nEnter 1 or 2:");
-  if (action === "1") {
-    editBoard();
-  }
-  if (action === "2") {
-    deleteBoard();
-  }
-});
+
+// ==============================
+// SAVE DATA
+// ==============================
+
 function saveData(): void {
   localStorage.setItem("kanban-boards", JSON.stringify(boards));
+
   localStorage.setItem("kanban-current-board", String(currentBoardId));
+
+  localStorage.setItem("kanban-columns", JSON.stringify(columns));
 }
+
+// ==============================
+// LOAD DATA
+// ==============================
+
 function loadData(): void {
   const savedBoards = localStorage.getItem("kanban-boards");
   const savedBoardId = localStorage.getItem("kanban-current-board");
+
   if (savedBoards) {
     try {
-      const data = JSON.parse(savedBoards) as Board[];
-      if (Array.isArray(data)) {
+      const data = JSON.parse(savedBoards);
+
+      if (Array.isArray(data) && data.length > 0) {
         boards.splice(0, boards.length, ...data);
       }
     } catch {
       localStorage.removeItem("kanban-boards");
     }
   }
+
   if (savedBoardId) {
     const id = Number(savedBoardId);
+
     if (boards.some((board) => board.id === id)) {
       currentBoardId = id;
     }
   }
 }
-const themeToggle = document.getElementById("theme-toggle");
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    const isDark = document.documentElement.classList.contains("dark");
-    localStorage.setItem("kanban-theme", isDark ? "dark" : "light");
-  });
-}
-const savedTheme = localStorage.getItem("kanban-theme");
-if (savedTheme === "dark") {
-  document.documentElement.classList.add("dark");
-}
-if (savedTheme === "light") {
-  document.documentElement.classList.remove("dark");
-}
-function updateTaskAfterSubtaskChange(task: Task): void {
-  renderTasks();
-  if (selectedTaskId === task.id) {
-    renderSubtasks(task);
-  }
-  saveData();
-}
-function moveTask(taskId: number, newStatus: TaskStatus): void {
-  const board = getCurrentBoard();
-  const task = board.tasks.find((item) => item.id === taskId);
-  if (!task) return;
-  task.status = newStatus;
-  saveData();
-  renderTasks();
-}
-function createMoveSelect(task: Task): HTMLSelectElement {
-  const select = document.createElement("select");
-  select.className =
-    "mt-3 w-full rounded-md border border-[#e4ebfa] bg-white p-2 text-xs dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white";
-  select.innerHTML = `
-    <option value="todo">Todo</option>
-    <option value="doing">Doing</option>
-    <option value="done">Done</option>
+
+// ==============================
+// TASK CARD
+// ==============================
+
+function createTaskElement(task: Task): HTMLDivElement {
+  const card = document.createElement("div");
+
+  card.className =
+    "cursor-pointer rounded-lg bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:bg-[#2b2c37]";
+
+  const completed = task.subtasks.filter((subtask) => subtask.completed).length;
+
+  card.innerHTML = `
+    <h3 class="mb-2 font-bold text-[#2b2c37] dark:text-white">
+      ${escapeHTML(task.title)}
+    </h3>
+
+    <p class="text-xs font-bold text-[#828fa3]">
+      ${completed} of ${task.subtasks.length} subtasks
+    </p>
   `;
-  select.value = task.status;
-  select.addEventListener("click", (event) => {
-    event.stopPropagation();
+
+  card.addEventListener("click", () => {
+    openTaskDetails(task.id);
   });
-  select.addEventListener("change", (event) => {
-    event.stopPropagation();
-    moveTask(task.id, select.value as TaskStatus);
-  });
-  return select;
+
+  return card;
 }
-const projectLinks: Record<string, string> = {
-  "Platform Launch": "",
-  "Marketing Plan": "",
-  Roadmap: "",
-  "Website Design": "",
-};
-function openBoardProject(board: Board): void {
-  const link = projectLinks[board.name];
-  if (!link) {
+
+// ==============================
+// RENDER TASKS
+// ==============================
+
+function renderTasks(): void {
+  const board = getCurrentBoard();
+
+  todoList.innerHTML = "";
+  doingList.innerHTML = "";
+  doneList.innerHTML = "";
+
+  board.tasks.forEach((task) => {
+    const card = createTaskElement(task);
+
+    if (task.status === "todo") {
+      todoList.appendChild(card);
+    }
+
+    if (task.status === "doing") {
+      doingList.appendChild(card);
+    }
+
+    if (task.status === "done") {
+      doneList.appendChild(card);
+    }
+  });
+
+  todoCount.textContent = `(${board.tasks.filter((task) => task.status === "todo").length})`;
+
+  doingCount.textContent = `(${board.tasks.filter((task) => task.status === "doing").length})`;
+
+  doneCount.textContent = `(${board.tasks.filter((task) => task.status === "done").length})`;
+
+  boardTitle.textContent = board.name;
+}
+
+// ==============================
+// TASK DETAILS
+// ==============================
+
+function openTaskDetails(taskId: number): void {
+  const board = getCurrentBoard();
+
+  const task = board.tasks.find((item) => item.id === taskId);
+
+  if (!task) return;
+
+  selectedTaskId = task.id;
+
+  detailsTitle.textContent = task.title;
+
+  detailsDescription.textContent =
+    task.description || "No description available.";
+
+  detailsStatus.value = task.status;
+
+  renderSubtasks(task);
+
+  taskMenu.classList.add("hidden");
+
+  taskDetails.classList.remove("hidden");
+  taskDetails.classList.add("flex");
+}
+
+function closeTaskDetails(): void {
+  taskDetails.classList.add("hidden");
+  taskDetails.classList.remove("flex");
+
+  taskMenu.classList.add("hidden");
+
+  selectedTaskId = null;
+}
+
+// ==============================
+// SUBTASKS
+// ==============================
+
+function renderSubtasks(task: Task): void {
+  detailsSubtasks.innerHTML = "";
+
+  if (task.subtasks.length === 0) {
+    detailsSubtasks.innerHTML = `
+      <p class="rounded-md bg-[#f4f7fd] p-4 text-sm text-[#828fa3] dark:bg-[#20212c]">
+        No subtasks.
+      </p>
+    `;
+
     return;
   }
-  window.open(link, "_blank");
-}
-function setupProjectClick(): void {
-  const buttons = document.querySelectorAll<HTMLButtonElement>(".board-button");
-  buttons.forEach((button) => {
-    button.addEventListener("dblclick", () => {
-      const boardId = Number(button.id.replace("board-", ""));
-      const board = boards.find((item) => item.id === boardId);
-      if (!board) return;
-      openBoardProject(board);
+
+  task.subtasks.forEach((subtask) => {
+    const item = document.createElement("label");
+
+    item.className =
+      "flex cursor-pointer items-center gap-3 rounded-md bg-[#f4f7fd] p-3 dark:bg-[#20212c]";
+
+    item.innerHTML = `
+      <input type="checkbox" class="subtask-checkbox h-4 w-4 accent-[#635fc7]" ${subtask.completed ? "checked" : ""} />
+
+      <span class="text-sm ${
+        subtask.completed
+          ? "text-[#828fa3] line-through"
+          : "text-[#2b2c37] dark:text-white"
+      }">
+        ${escapeHTML(subtask.title)}
+      </span>
+    `;
+
+    const checkbox = item.querySelector(
+      ".subtask-checkbox",
+    ) as HTMLInputElement;
+
+    checkbox.addEventListener("change", () => {
+      subtask.completed = checkbox.checked;
+
+      renderSubtasks(task);
+      renderTasks();
+      saveData();
     });
+
+    detailsSubtasks.appendChild(item);
   });
 }
-function updateProjectLinks(): void {
-  const buttons = document.querySelectorAll<HTMLButtonElement>(".board-button");
-  buttons.forEach((button) => {
-    const boardId = Number(button.id.replace("board-", ""));
-    const board = boards.find((item) => item.id === boardId);
-    if (!board) return;
-    button.title = projectLinks[board.name] ? "Open project" : "";
+
+// ==============================
+// TASK MENU
+// ==============================
+
+taskMenuButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  taskMenu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", (event) => {
+  const target = event.target as Node;
+
+  if (!taskMenu.contains(target) && !taskMenuButton.contains(target)) {
+    taskMenu.classList.add("hidden");
+  }
+
+  if (!boardMenu.contains(target) && !boardMenuButton.contains(target)) {
+    boardMenu.classList.add("hidden");
+  }
+});
+
+// ==============================
+// CLOSE DETAILS
+// ==============================
+
+closeDetails.addEventListener("click", () => {
+  closeTaskDetails();
+});
+
+taskDetails.addEventListener("click", (event) => {
+  if (event.target === taskDetails) {
+    closeTaskDetails();
+  }
+});
+
+// ==============================
+// CHANGE TASK STATUS
+// ==============================
+
+detailsStatus.addEventListener("change", () => {
+  if (selectedTaskId === null) return;
+
+  const board = getCurrentBoard();
+
+  const task = board.tasks.find((item) => item.id === selectedTaskId);
+
+  if (!task) return;
+
+  task.status = detailsStatus.value as TaskStatus;
+
+  saveData();
+  renderTasks();
+});
+
+// ==============================
+// OPEN ADD TASK
+// ==============================
+
+addTaskButton.addEventListener("click", () => {
+  openAddTaskModal();
+});
+
+function openAddTaskModal(): void {
+  editingTaskId = null;
+
+  taskModalTitle.textContent = "Add New Task";
+  submitTaskButton.textContent = "Create Task";
+
+  taskForm.reset();
+
+  subtaskContainer.innerHTML = "";
+
+  addSubtaskInput();
+
+  taskModal.classList.remove("hidden");
+  taskModal.classList.add("flex");
+
+  taskTitleInput.focus();
+}
+
+// ==============================
+// CLOSE TASK MODAL
+// ==============================
+
+closeModal.addEventListener("click", () => {
+  closeTaskModal();
+});
+
+function closeTaskModal(): void {
+  taskModal.classList.add("hidden");
+  taskModal.classList.remove("flex");
+
+  editingTaskId = null;
+}
+
+// ==============================
+// ADD SUBTASK
+// ==============================
+
+addSubtaskButton.addEventListener("click", () => {
+  addSubtaskInput();
+});
+
+function addSubtaskInput(value = ""): void {
+  const wrapper = document.createElement("div");
+
+  wrapper.className = "flex gap-3";
+
+  wrapper.innerHTML = `
+    <input type="text" value="${escapeAttribute(value)}" placeholder="e.g. Make coffee" class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white" />
+
+    <button type="button" class="remove-subtask px-2 text-xl font-bold text-[#828fa3] hover:text-[#ea5555]">
+      ×
+    </button>
+  `;
+
+  subtaskContainer.appendChild(wrapper);
+}
+
+subtaskContainer.addEventListener("click", (event) => {
+  const target = event.target as HTMLElement;
+
+  if (target.classList.contains("remove-subtask")) {
+    target.parentElement?.remove();
+  }
+});
+
+// ==============================
+// CREATE / EDIT TASK
+// ==============================
+
+taskForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const board = getCurrentBoard();
+
+  const title = taskTitleInput.value.trim();
+
+  if (!title) {
+    return;
+  }
+
+  const description = taskDescriptionInput.value.trim();
+
+  const status = taskStatusInput.value as TaskStatus;
+
+  const inputs =
+    subtaskContainer.querySelectorAll<HTMLInputElement>(".subtask-input");
+
+  const subtasks: Subtask[] = [];
+
+  inputs.forEach((input, index) => {
+    const subtaskTitle = input.value.trim();
+
+    if (subtaskTitle) {
+      subtasks.push({
+        id: Date.now() + index,
+        title: subtaskTitle,
+        completed: false,
+      });
+    }
+  });
+
+  // EDIT
+  if (editingTaskId !== null) {
+    const task = board.tasks.find((item) => item.id === editingTaskId);
+
+    if (task) {
+      task.title = title;
+      task.description = description;
+      task.status = status;
+      task.subtasks = subtasks;
+    }
+  }
+
+  // CREATE
+  else {
+    const newTask: Task = {
+      id: Date.now(),
+      title,
+      description,
+      status,
+      subtasks,
+    };
+
+    board.tasks.push(newTask);
+  }
+
+  saveData();
+  renderTasks();
+
+  closeTaskModal();
+  closeTaskDetails();
+});
+
+// ==============================
+// EDIT TASK
+// ==============================
+
+editTaskButton.addEventListener("click", () => {
+  if (selectedTaskId === null) return;
+
+  const board = getCurrentBoard();
+
+  const task = board.tasks.find((item) => item.id === selectedTaskId);
+
+  if (!task) return;
+
+  editingTaskId = task.id;
+
+  taskModalTitle.textContent = "Edit Task";
+  submitTaskButton.textContent = "Save Changes";
+
+  taskTitleInput.value = task.title;
+  taskDescriptionInput.value = task.description;
+  taskStatusInput.value = task.status;
+
+  subtaskContainer.innerHTML = "";
+
+  if (task.subtasks.length === 0) {
+    addSubtaskInput();
+  } else {
+    task.subtasks.forEach((subtask) => {
+      addSubtaskInput(subtask.title);
+    });
+  }
+
+  taskMenu.classList.add("hidden");
+
+  taskDetails.classList.add("hidden");
+  taskDetails.classList.remove("flex");
+
+  taskModal.classList.remove("hidden");
+  taskModal.classList.add("flex");
+
+  taskTitleInput.focus();
+});
+
+// ==============================
+// DELETE TASK
+// ==============================
+
+deleteTaskButton.addEventListener("click", () => {
+  if (selectedTaskId === null) return;
+
+  const board = getCurrentBoard();
+
+  const task = board.tasks.find((item) => item.id === selectedTaskId);
+
+  if (!task) return;
+
+  taskToDeleteId = task.id;
+
+  deleteMessage.textContent = `Are you sure you want to delete "${task.title}"? This action cannot be undone.`;
+
+  taskMenu.classList.add("hidden");
+
+  taskDetails.classList.add("hidden");
+  taskDetails.classList.remove("flex");
+
+  deleteModal.classList.remove("hidden");
+  deleteModal.classList.add("flex");
+});
+
+// ==============================
+// CONFIRM DELETE
+// ==============================
+
+confirmDelete.addEventListener("click", () => {
+  if (taskToDeleteId === null) return;
+
+  const board = getCurrentBoard();
+
+  const index = board.tasks.findIndex((task) => task.id === taskToDeleteId);
+
+  if (index !== -1) {
+    board.tasks.splice(index, 1);
+  }
+
+  taskToDeleteId = null;
+  selectedTaskId = null;
+
+  deleteModal.classList.add("hidden");
+  deleteModal.classList.remove("flex");
+
+  saveData();
+  renderTasks();
+});
+
+// ==============================
+// CANCEL DELETE
+// ==============================
+
+cancelDelete.addEventListener("click", () => {
+  taskToDeleteId = null;
+
+  deleteModal.classList.add("hidden");
+  deleteModal.classList.remove("flex");
+});
+
+deleteModal.addEventListener("click", (event) => {
+  if (event.target === deleteModal) {
+    taskToDeleteId = null;
+
+    deleteModal.classList.add("hidden");
+    deleteModal.classList.remove("flex");
+  }
+});
+
+// ==============================
+// BOARD SIDEBAR
+// ==============================
+
+function renderSidebar(): void {
+  boardsNav.innerHTML = "";
+
+  boards.forEach((board) => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+
+    button.id = `board-${board.id}`;
+
+    button.className =
+      "board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]";
+
+    if (board.id === currentBoardId) {
+      button.classList.add("bg-[#635fc7]", "text-white");
+    } else {
+      button.classList.add("text-[#828fa3]");
+    }
+
+    button.innerHTML = `
+      <span>▰</span>
+      <span>${escapeHTML(board.name)}</span>
+    `;
+
+    button.addEventListener("click", () => {
+      currentBoardId = board.id;
+
+      boardMenu.classList.add("hidden");
+
+      renderSidebar();
+      renderTasks();
+
+      saveData();
+    });
+
+    boardsNav.appendChild(button);
   });
 }
-function refreshBoardUI(): void {
+
+// ==============================
+// BOARD COUNT
+// ==============================
+
+function updateBoardsCount(): void {
+  boardsCount.textContent = `All Boards (${boards.length})`;
+}
+
+// ==============================
+// CREATE BOARD
+// ==============================
+
+createBoardButton.addEventListener("click", () => {
+  boardForm.reset();
+
+  boardModal.classList.remove("hidden");
+  boardModal.classList.add("flex");
+
+  boardNameInput.focus();
+});
+
+closeBoardModal.addEventListener("click", () => {
+  closeBoardModalWindow();
+});
+
+function closeBoardModalWindow(): void {
+  boardModal.classList.add("hidden");
+  boardModal.classList.remove("flex");
+}
+
+boardForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = boardNameInput.value.trim();
+
+  if (!name) return;
+
+  const newBoard: Board = {
+    id: Date.now(),
+    name,
+    tasks: [],
+  };
+
+  boards.push(newBoard);
+
+  currentBoardId = newBoard.id;
+
+  saveData();
+
+  closeBoardModalWindow();
+
   renderSidebar();
   updateBoardsCount();
   renderTasks();
-  updateProjectLinks();
+});
+
+// ==============================
+// BOARD MENU
+// ==============================
+
+boardMenuButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  boardMenu.classList.toggle("hidden");
+});
+
+// ==============================
+// EDIT BOARD
+// ==============================
+
+editBoardButton.addEventListener("click", () => {
+  const board = getCurrentBoard();
+
+  const newName = prompt("Enter new board name:", board.name);
+
+  if (!newName) return;
+
+  const name = newName.trim();
+
+  if (!name) return;
+
+  board.name = name;
+
+  boardMenu.classList.add("hidden");
+
+  saveData();
+
+  renderSidebar();
+  renderTasks();
+  updateBoardsCount();
+});
+
+// ==============================
+// DELETE BOARD
+// ==============================
+
+deleteBoardButton.addEventListener("click", () => {
+  if (boards.length <= 1) {
+    alert("You cannot delete the last board.");
+    return;
+  }
+
+  const board = getCurrentBoard();
+
+  const confirmed = confirm(`Are you sure you want to delete "${board.name}"?`);
+
+  if (!confirmed) return;
+
+  const index = boards.findIndex((item) => item.id === board.id);
+
+  if (index === -1) return;
+
+  boards.splice(index, 1);
+
+  currentBoardId = boards[0].id;
+
+  boardMenu.classList.add("hidden");
+
+  saveData();
+
+  renderSidebar();
+  renderTasks();
+  updateBoardsCount();
+});
+
+// ==============================
+// HIDE SIDEBAR
+// ==============================
+
+hideSidebarButton.addEventListener("click", () => {
+  sidebar.classList.add("-translate-x-full");
+
+  mainContent.classList.remove("pl-[260px]");
+
+  showSidebarButton.classList.remove("hidden");
+  showSidebarButton.classList.add("flex");
+});
+
+// ==============================
+// SHOW SIDEBAR
+// ==============================
+
+showSidebarButton.addEventListener("click", () => {
+  sidebar.classList.remove("-translate-x-full");
+
+  mainContent.classList.add("pl-[260px]");
+
+  showSidebarButton.classList.add("hidden");
+  showSidebarButton.classList.remove("flex");
+});
+
+// ==============================
+// THEME
+// ==============================
+
+themeToggle.addEventListener("click", () => {
+  const isDark = document.documentElement.classList.toggle("dark");
+
+  localStorage.setItem("kanban-theme", isDark ? "dark" : "light");
+});
+
+function loadTheme(): void {
+  const savedTheme = localStorage.getItem("kanban-theme");
+
+  if (savedTheme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
 }
-function addProjectLink(boardName: string, url: string): void {
-  projectLinks[boardName] = url;
+
+// ==============================
+// NEW COLUMN
+// ==============================
+
+newColumnButton.addEventListener("click", () => {
+  columnForm.reset();
+
+  columnModal.classList.remove("hidden");
+  columnModal.classList.add("flex");
+
+  columnNameInput.focus();
+});
+
+closeColumnModal.addEventListener("click", () => {
+  closeColumnModalWindow();
+});
+
+function closeColumnModalWindow(): void {
+  columnModal.classList.add("hidden");
+  columnModal.classList.remove("flex");
 }
-addProjectLink("Platform Launch", "");
-addProjectLink("Marketing Plan", "");
-addProjectLink("Roadmap", "");
-addProjectLink("Website Design", "");
+
+columnForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = columnNameInput.value.trim();
+
+  if (!name) return;
+
+  columns.push({
+    id: Date.now(),
+    name,
+  });
+
+  saveData();
+
+  closeColumnModalWindow();
+
+  alert(`"${name}" column created.`);
+});
+
+// ==============================
+// ESCAPE HTML
+// ==============================
+
+function escapeHTML(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function escapeAttribute(value: string): string {
+  return escapeHTML(value);
+}
+
+// ==============================
+// INITIALIZE
+// ==============================
+
 loadData();
-refreshBoardUI();
+loadTheme();
+renderSidebar();
+updateBoardsCount();
+renderTasks();
