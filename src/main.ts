@@ -1,13 +1,10 @@
 import "./style.css";
-
 type TaskStatus = "todo" | "doing" | "done";
-
 interface Subtask {
   id: number;
   title: string;
   completed: boolean;
 }
-
 interface Task {
   id: number;
   title: string;
@@ -15,18 +12,15 @@ interface Task {
   status: TaskStatus;
   subtasks: Subtask[];
 }
-
 interface Board {
   id: number;
   name: string;
   tasks: Task[];
 }
-
 interface Column {
   id: number;
   name: string;
 }
-
 const boards: Board[] = [
   {
     id: 1,
@@ -570,11 +564,6 @@ const boards: Board[] = [
     ],
   },
 ];
-
-// ==============================
-// STATE
-// ==============================
-
 let currentBoardId = 1;
 let selectedTaskId: number | null = null;
 let editingTaskId: number | null = null;
@@ -594,29 +583,18 @@ const columns: Column[] = [
     name: "Done",
   },
 ];
-
-// ==============================
-// DOM
-// ==============================
-
 const sidebar = document.getElementById("sidebar")!;
 const mainContent = document.getElementById("main-content")!;
-
 const boardsNav = document.getElementById("boards-nav")!;
 const boardsCount = document.getElementById("boards-count")!;
-
 const boardTitle = document.getElementById("board-title")!;
-
 const todoList = document.getElementById("todo-list")!;
 const doingList = document.getElementById("doing-list")!;
 const doneList = document.getElementById("done-list")!;
-
 const todoCount = document.getElementById("todo-count")!;
 const doingCount = document.getElementById("doing-count")!;
 const doneCount = document.getElementById("done-count")!;
-
 const addTaskButton = document.getElementById("add-task")!;
-
 const taskDetails = document.getElementById("task-details")!;
 const detailsTitle = document.getElementById("details-title")!;
 const detailsDescription = document.getElementById("details-description")!;
@@ -624,23 +602,18 @@ const detailsStatus = document.getElementById(
   "details-status",
 ) as HTMLSelectElement;
 const detailsSubtasks = document.getElementById("details-subtasks")!;
-
 const taskMenuButton = document.getElementById("task-menu-button")!;
 const taskMenu = document.getElementById("task-menu")!;
-
 const closeDetails = document.getElementById("close-details")!;
 const editTaskButton = document.getElementById("edit-task")!;
 const deleteTaskButton = document.getElementById("delete-task")!;
-
 const deleteModal = document.getElementById("delete-modal")!;
 const deleteMessage = document.getElementById("delete-message")!;
 const confirmDelete = document.getElementById("confirm-delete")!;
 const cancelDelete = document.getElementById("cancel-delete")!;
-
 const taskModal = document.getElementById("task-modal")!;
 const taskModalTitle = document.getElementById("task-modal-title")!;
 const taskForm = document.getElementById("task-form") as HTMLFormElement;
-
 const taskTitleInput = document.getElementById(
   "task-title",
 ) as HTMLInputElement;
@@ -650,13 +623,10 @@ const taskDescriptionInput = document.getElementById(
 const taskStatusInput = document.getElementById(
   "task-status",
 ) as HTMLSelectElement;
-
 const submitTaskButton = document.getElementById("submit-task")!;
-
 const closeModal = document.getElementById("close-modal")!;
 const addSubtaskButton = document.getElementById("add-subtask")!;
 const subtaskContainer = document.getElementById("subtask-container")!;
-
 const createBoardButton = document.getElementById("create-board")!;
 const boardModal = document.getElementById("board-modal")!;
 const closeBoardModal = document.getElementById("close-board-modal")!;
@@ -664,17 +634,13 @@ const boardForm = document.getElementById("board-form") as HTMLFormElement;
 const boardNameInput = document.getElementById(
   "board-name",
 ) as HTMLInputElement;
-
 const boardMenuButton = document.getElementById("board-menu-button")!;
 const boardMenu = document.getElementById("board-menu")!;
 const editBoardButton = document.getElementById("edit-board")!;
 const deleteBoardButton = document.getElementById("delete-board")!;
-
 const themeToggle = document.getElementById("theme-toggle")!;
-
 const hideSidebarButton = document.getElementById("hide-sidebar")!;
 const showSidebarButton = document.getElementById("show-sidebar")!;
-
 const newColumnButton = document.getElementById("new-column")!;
 const columnModal = document.getElementById("column-modal")!;
 const closeColumnModal = document.getElementById("close-column-modal")!;
@@ -682,45 +648,24 @@ const columnForm = document.getElementById("column-form") as HTMLFormElement;
 const columnNameInput = document.getElementById(
   "column-name",
 ) as HTMLInputElement;
-
-// ==============================
-// CURRENT BOARD
-// ==============================
-
 function getCurrentBoard(): Board {
   const board = boards.find((item) => item.id === currentBoardId);
-
   if (!board) {
     return boards[0];
   }
-
   return board;
 }
-
-// ==============================
-// SAVE DATA
-// ==============================
-
 function saveData(): void {
   localStorage.setItem("kanban-boards", JSON.stringify(boards));
-
   localStorage.setItem("kanban-current-board", String(currentBoardId));
-
   localStorage.setItem("kanban-columns", JSON.stringify(columns));
 }
-
-// ==============================
-// LOAD DATA
-// ==============================
-
 function loadData(): void {
   const savedBoards = localStorage.getItem("kanban-boards");
   const savedBoardId = localStorage.getItem("kanban-current-board");
-
   if (savedBoards) {
     try {
       const data = JSON.parse(savedBoards);
-
       if (Array.isArray(data) && data.length > 0) {
         boards.splice(0, boards.length, ...data);
       }
@@ -728,144 +673,89 @@ function loadData(): void {
       localStorage.removeItem("kanban-boards");
     }
   }
-
   if (savedBoardId) {
     const id = Number(savedBoardId);
-
     if (boards.some((board) => board.id === id)) {
       currentBoardId = id;
     }
   }
 }
-
-// ==============================
-// TASK CARD
-// ==============================
-
 function createTaskElement(task: Task): HTMLDivElement {
   const card = document.createElement("div");
-
   card.className =
     "cursor-pointer rounded-lg bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:bg-[#2b2c37]";
-
   const completed = task.subtasks.filter((subtask) => subtask.completed).length;
-
   card.innerHTML = `
     <h3 class="mb-2 font-bold text-[#2b2c37] dark:text-white">
       ${escapeHTML(task.title)}
     </h3>
-
     <p class="text-xs font-bold text-[#828fa3]">
       ${completed} of ${task.subtasks.length} subtasks
     </p>
   `;
-
   card.addEventListener("click", () => {
     openTaskDetails(task.id);
   });
-
   return card;
 }
-
-// ==============================
-// RENDER TASKS
-// ==============================
-
 function renderTasks(): void {
   const board = getCurrentBoard();
-
   todoList.innerHTML = "";
   doingList.innerHTML = "";
   doneList.innerHTML = "";
-
   board.tasks.forEach((task) => {
     const card = createTaskElement(task);
-
     if (task.status === "todo") {
       todoList.appendChild(card);
     }
-
     if (task.status === "doing") {
       doingList.appendChild(card);
     }
-
     if (task.status === "done") {
       doneList.appendChild(card);
     }
   });
-
   todoCount.textContent = `(${board.tasks.filter((task) => task.status === "todo").length})`;
-
   doingCount.textContent = `(${board.tasks.filter((task) => task.status === "doing").length})`;
-
   doneCount.textContent = `(${board.tasks.filter((task) => task.status === "done").length})`;
-
   boardTitle.textContent = board.name;
 }
-
-// ==============================
-// TASK DETAILS
-// ==============================
-
 function openTaskDetails(taskId: number): void {
   const board = getCurrentBoard();
-
   const task = board.tasks.find((item) => item.id === taskId);
-
   if (!task) return;
-
   selectedTaskId = task.id;
-
   detailsTitle.textContent = task.title;
-
   detailsDescription.textContent =
     task.description || "No description available.";
-
   detailsStatus.value = task.status;
-
   renderSubtasks(task);
-
   taskMenu.classList.add("hidden");
-
   taskDetails.classList.remove("hidden");
   taskDetails.classList.add("flex");
 }
-
 function closeTaskDetails(): void {
   taskDetails.classList.add("hidden");
   taskDetails.classList.remove("flex");
-
   taskMenu.classList.add("hidden");
-
   selectedTaskId = null;
 }
-
-// ==============================
-// SUBTASKS
-// ==============================
-
 function renderSubtasks(task: Task): void {
   detailsSubtasks.innerHTML = "";
-
   if (task.subtasks.length === 0) {
     detailsSubtasks.innerHTML = `
       <p class="rounded-md bg-[#f4f7fd] p-4 text-sm text-[#828fa3] dark:bg-[#20212c]">
         No subtasks.
       </p>
     `;
-
     return;
   }
-
   task.subtasks.forEach((subtask) => {
     const item = document.createElement("label");
-
     item.className =
       "flex cursor-pointer items-center gap-3 rounded-md bg-[#f4f7fd] p-3 dark:bg-[#20212c]";
-
     item.innerHTML = `
       <input type="checkbox" class="subtask-checkbox h-4 w-4 accent-[#635fc7]" ${subtask.completed ? "checked" : ""} />
-
       <span class="text-sm ${
         subtask.completed
           ? "text-[#828fa3] line-through"
@@ -874,178 +764,104 @@ function renderSubtasks(task: Task): void {
         ${escapeHTML(subtask.title)}
       </span>
     `;
-
     const checkbox = item.querySelector(
       ".subtask-checkbox",
     ) as HTMLInputElement;
-
     checkbox.addEventListener("change", () => {
       subtask.completed = checkbox.checked;
-
       renderSubtasks(task);
       renderTasks();
       saveData();
     });
-
     detailsSubtasks.appendChild(item);
   });
 }
-
-// ==============================
-// TASK MENU
-// ==============================
-
 taskMenuButton.addEventListener("click", (event) => {
   event.stopPropagation();
-
   taskMenu.classList.toggle("hidden");
 });
-
 document.addEventListener("click", (event) => {
   const target = event.target as Node;
-
   if (!taskMenu.contains(target) && !taskMenuButton.contains(target)) {
     taskMenu.classList.add("hidden");
   }
-
   if (!boardMenu.contains(target) && !boardMenuButton.contains(target)) {
     boardMenu.classList.add("hidden");
   }
 });
-
-// ==============================
-// CLOSE DETAILS
-// ==============================
-
 closeDetails.addEventListener("click", () => {
   closeTaskDetails();
 });
-
 taskDetails.addEventListener("click", (event) => {
   if (event.target === taskDetails) {
     closeTaskDetails();
   }
 });
-
-// ==============================
-// CHANGE TASK STATUS
-// ==============================
-
 detailsStatus.addEventListener("change", () => {
   if (selectedTaskId === null) return;
-
   const board = getCurrentBoard();
-
   const task = board.tasks.find((item) => item.id === selectedTaskId);
-
   if (!task) return;
-
   task.status = detailsStatus.value as TaskStatus;
-
   saveData();
   renderTasks();
 });
-
-// ==============================
-// OPEN ADD TASK
-// ==============================
-
 addTaskButton.addEventListener("click", () => {
   openAddTaskModal();
 });
-
 function openAddTaskModal(): void {
   editingTaskId = null;
-
   taskModalTitle.textContent = "Add New Task";
   submitTaskButton.textContent = "Create Task";
-
   taskForm.reset();
-
   subtaskContainer.innerHTML = "";
-
   addSubtaskInput();
-
   taskModal.classList.remove("hidden");
   taskModal.classList.add("flex");
-
   taskTitleInput.focus();
 }
-
-// ==============================
-// CLOSE TASK MODAL
-// ==============================
-
 closeModal.addEventListener("click", () => {
   closeTaskModal();
 });
-
 function closeTaskModal(): void {
   taskModal.classList.add("hidden");
   taskModal.classList.remove("flex");
-
   editingTaskId = null;
 }
-
-// ==============================
-// ADD SUBTASK
-// ==============================
-
 addSubtaskButton.addEventListener("click", () => {
   addSubtaskInput();
 });
-
 function addSubtaskInput(value = ""): void {
   const wrapper = document.createElement("div");
-
   wrapper.className = "flex gap-3";
-
   wrapper.innerHTML = `
     <input type="text" value="${escapeAttribute(value)}" placeholder="e.g. Make coffee" class="subtask-input flex-1 rounded-md border border-[#e4ebfa] bg-white p-3 text-sm outline-none focus:border-[#635fc7] dark:border-[#3e3f4e] dark:bg-[#20212c] dark:text-white" />
-
     <button type="button" class="remove-subtask px-2 text-xl font-bold text-[#828fa3] hover:text-[#ea5555]">
       ×
     </button>
   `;
-
   subtaskContainer.appendChild(wrapper);
 }
-
 subtaskContainer.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
-
   if (target.classList.contains("remove-subtask")) {
     target.parentElement?.remove();
   }
 });
-
-// ==============================
-// CREATE / EDIT TASK
-// ==============================
-
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const board = getCurrentBoard();
-
   const title = taskTitleInput.value.trim();
-
   if (!title) {
     return;
   }
-
   const description = taskDescriptionInput.value.trim();
-
   const status = taskStatusInput.value as TaskStatus;
-
   const inputs =
     subtaskContainer.querySelectorAll<HTMLInputElement>(".subtask-input");
-
   const subtasks: Subtask[] = [];
-
   inputs.forEach((input, index) => {
     const subtaskTitle = input.value.trim();
-
     if (subtaskTitle) {
       subtasks.push({
         id: Date.now() + index,
@@ -1054,11 +870,8 @@ taskForm.addEventListener("submit", (event) => {
       });
     }
   });
-
-  // EDIT
   if (editingTaskId !== null) {
     const task = board.tasks.find((item) => item.id === editingTaskId);
-
     if (task) {
       task.title = title;
       task.description = description;
@@ -1066,8 +879,6 @@ taskForm.addEventListener("submit", (event) => {
       task.subtasks = subtasks;
     }
   }
-
-  // CREATE
   else {
     const newTask: Task = {
       id: Date.now(),
@@ -1076,41 +887,25 @@ taskForm.addEventListener("submit", (event) => {
       status,
       subtasks,
     };
-
     board.tasks.push(newTask);
   }
-
   saveData();
   renderTasks();
-
   closeTaskModal();
   closeTaskDetails();
 });
-
-// ==============================
-// EDIT TASK
-// ==============================
-
 editTaskButton.addEventListener("click", () => {
   if (selectedTaskId === null) return;
-
   const board = getCurrentBoard();
-
   const task = board.tasks.find((item) => item.id === selectedTaskId);
-
   if (!task) return;
-
   editingTaskId = task.id;
-
   taskModalTitle.textContent = "Edit Task";
   submitTaskButton.textContent = "Save Changes";
-
   taskTitleInput.value = task.title;
   taskDescriptionInput.value = task.description;
   taskStatusInput.value = task.status;
-
   subtaskContainer.innerHTML = "";
-
   if (task.subtasks.length === 0) {
     addSubtaskInput();
   } else {
@@ -1118,293 +913,163 @@ editTaskButton.addEventListener("click", () => {
       addSubtaskInput(subtask.title);
     });
   }
-
   taskMenu.classList.add("hidden");
-
   taskDetails.classList.add("hidden");
   taskDetails.classList.remove("flex");
-
   taskModal.classList.remove("hidden");
   taskModal.classList.add("flex");
-
   taskTitleInput.focus();
 });
-
-// ==============================
-// DELETE TASK
-// ==============================
-
 deleteTaskButton.addEventListener("click", () => {
   if (selectedTaskId === null) return;
-
   const board = getCurrentBoard();
-
   const task = board.tasks.find((item) => item.id === selectedTaskId);
-
   if (!task) return;
-
   taskToDeleteId = task.id;
-
   deleteMessage.textContent = `Are you sure you want to delete "${task.title}"? This action cannot be undone.`;
-
   taskMenu.classList.add("hidden");
-
   taskDetails.classList.add("hidden");
   taskDetails.classList.remove("flex");
-
   deleteModal.classList.remove("hidden");
   deleteModal.classList.add("flex");
 });
-
-// ==============================
-// CONFIRM DELETE
-// ==============================
-
 confirmDelete.addEventListener("click", () => {
   if (taskToDeleteId === null) return;
-
   const board = getCurrentBoard();
-
   const index = board.tasks.findIndex((task) => task.id === taskToDeleteId);
-
   if (index !== -1) {
     board.tasks.splice(index, 1);
   }
-
   taskToDeleteId = null;
   selectedTaskId = null;
-
   deleteModal.classList.add("hidden");
   deleteModal.classList.remove("flex");
-
   saveData();
   renderTasks();
 });
-
-// ==============================
-// CANCEL DELETE
-// ==============================
-
 cancelDelete.addEventListener("click", () => {
   taskToDeleteId = null;
-
   deleteModal.classList.add("hidden");
   deleteModal.classList.remove("flex");
 });
-
 deleteModal.addEventListener("click", (event) => {
   if (event.target === deleteModal) {
     taskToDeleteId = null;
-
     deleteModal.classList.add("hidden");
     deleteModal.classList.remove("flex");
   }
 });
-
-// ==============================
-// BOARD SIDEBAR
-// ==============================
-
 function renderSidebar(): void {
   boardsNav.innerHTML = "";
-
   boards.forEach((board) => {
     const button = document.createElement("button");
-
     button.type = "button";
-
     button.id = `board-${board.id}`;
-
     button.className =
       "board-button flex h-12 w-[231px] items-center gap-3 rounded-r-2xl px-6 text-left hover:bg-[#f0effa] hover:text-[#635fc7] dark:hover:bg-[#3e3f4e]";
-
     if (board.id === currentBoardId) {
       button.classList.add("bg-[#635fc7]", "text-white");
     } else {
       button.classList.add("text-[#828fa3]");
     }
-
     button.innerHTML = `
       <span>▰</span>
       <span>${escapeHTML(board.name)}</span>
     `;
-
     button.addEventListener("click", () => {
       currentBoardId = board.id;
-
       boardMenu.classList.add("hidden");
-
       renderSidebar();
       renderTasks();
-
       saveData();
     });
-
     boardsNav.appendChild(button);
   });
 }
-
-// ==============================
-// BOARD COUNT
-// ==============================
-
 function updateBoardsCount(): void {
   boardsCount.textContent = `All Boards (${boards.length})`;
 }
-
-// ==============================
-// CREATE BOARD
-// ==============================
-
 createBoardButton.addEventListener("click", () => {
   boardForm.reset();
-
   boardModal.classList.remove("hidden");
   boardModal.classList.add("flex");
-
   boardNameInput.focus();
 });
-
 closeBoardModal.addEventListener("click", () => {
   closeBoardModalWindow();
 });
-
 function closeBoardModalWindow(): void {
   boardModal.classList.add("hidden");
   boardModal.classList.remove("flex");
 }
-
 boardForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const name = boardNameInput.value.trim();
-
   if (!name) return;
-
   const newBoard: Board = {
     id: Date.now(),
     name,
     tasks: [],
   };
-
   boards.push(newBoard);
-
   currentBoardId = newBoard.id;
-
   saveData();
-
   closeBoardModalWindow();
-
   renderSidebar();
   updateBoardsCount();
   renderTasks();
 });
-
-// ==============================
-// BOARD MENU
-// ==============================
-
 boardMenuButton.addEventListener("click", (event) => {
   event.stopPropagation();
-
   boardMenu.classList.toggle("hidden");
 });
-
-// ==============================
-// EDIT BOARD
-// ==============================
-
 editBoardButton.addEventListener("click", () => {
   const board = getCurrentBoard();
-
   const newName = prompt("Enter new board name:", board.name);
-
   if (!newName) return;
-
   const name = newName.trim();
-
   if (!name) return;
-
   board.name = name;
-
   boardMenu.classList.add("hidden");
-
   saveData();
-
   renderSidebar();
   renderTasks();
   updateBoardsCount();
 });
-
-// ==============================
-// DELETE BOARD
-// ==============================
-
 deleteBoardButton.addEventListener("click", () => {
   if (boards.length <= 1) {
     alert("You cannot delete the last board.");
     return;
   }
-
   const board = getCurrentBoard();
-
   const confirmed = confirm(`Are you sure you want to delete "${board.name}"?`);
-
   if (!confirmed) return;
-
   const index = boards.findIndex((item) => item.id === board.id);
-
   if (index === -1) return;
-
   boards.splice(index, 1);
-
   currentBoardId = boards[0].id;
-
   boardMenu.classList.add("hidden");
-
   saveData();
-
   renderSidebar();
   renderTasks();
   updateBoardsCount();
 });
-
-// ==============================
-// HIDE SIDEBAR
-// ==============================
-
 hideSidebarButton.addEventListener("click", () => {
   sidebar.classList.add("-translate-x-full");
-
   mainContent.classList.remove("pl-[260px]");
-
   showSidebarButton.classList.remove("hidden");
   showSidebarButton.classList.add("flex");
 });
-
-// ==============================
-// SHOW SIDEBAR
-// ==============================
-
 showSidebarButton.addEventListener("click", () => {
   sidebar.classList.remove("-translate-x-full");
-
   mainContent.classList.add("pl-[260px]");
-
   showSidebarButton.classList.add("hidden");
   showSidebarButton.classList.remove("flex");
 });
-
-// ==============================
-// THEME
-// ==============================
-
 themeToggle.addEventListener("click", () => {
   const isDark = document.documentElement.classList.toggle("dark");
-
   localStorage.setItem("kanban-theme", isDark ? "dark" : "light");
 });
-
 function loadTheme(): void {
   const savedTheme = localStorage.getItem("kanban-theme");
 
@@ -1414,52 +1079,31 @@ function loadTheme(): void {
     document.documentElement.classList.add("dark");
   }
 }
-
-// ==============================
-// NEW COLUMN
-// ==============================
-
 newColumnButton.addEventListener("click", () => {
   columnForm.reset();
-
   columnModal.classList.remove("hidden");
   columnModal.classList.add("flex");
-
   columnNameInput.focus();
 });
-
 closeColumnModal.addEventListener("click", () => {
   closeColumnModalWindow();
 });
-
 function closeColumnModalWindow(): void {
   columnModal.classList.add("hidden");
   columnModal.classList.remove("flex");
 }
-
 columnForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const name = columnNameInput.value.trim();
-
   if (!name) return;
-
   columns.push({
     id: Date.now(),
     name,
   });
-
   saveData();
-
   closeColumnModalWindow();
-
   alert(`"${name}" column created.`);
 });
-
-// ==============================
-// ESCAPE HTML
-// ==============================
-
 function escapeHTML(value: string): string {
   return value
     .replaceAll("&", "&amp;")
@@ -1468,15 +1112,9 @@ function escapeHTML(value: string): string {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
-
 function escapeAttribute(value: string): string {
   return escapeHTML(value);
 }
-
-// ==============================
-// INITIALIZE
-// ==============================
-
 loadData();
 loadTheme();
 renderSidebar();
